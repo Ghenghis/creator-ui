@@ -372,6 +372,17 @@ async function dailySpecial() {
   await compose();
 }
 
+async function cookbook() {
+  const cookbookPath = join(projectRoot, 'docs/evidence/cookbook.html');
+  console.log(`📚 Rebuilding Barro's Pizza Cookbook...`);
+  try {
+    execSync(`node tools/build-cookbook.mjs`, { stdio: 'inherit', cwd: projectRoot });
+    console.log(`✅ Cookbook: ${cookbookPath}`);
+  } catch (e) {
+    console.error(`❌ Cookbook build failed: ${e.message.slice(0, 200)}`);
+  }
+}
+
 // === Dispatch ===
 console.log('');
 switch (cmd) {
@@ -387,6 +398,7 @@ switch (cmd) {
   case 'pipeline': await pipeline(); break;
   case 'export': await exportRecipe(); break;
   case 'daily': await dailySpecial(); break;
+  case 'cookbook': await cookbook(); break;
   default:
     console.log(`Barro's Pizza CLI`);
     console.log(`Usage:`);
@@ -398,6 +410,7 @@ switch (cmd) {
     console.log(`  barro pipeline [prompt] [--name X]`);
     console.log(`  barro export <pizza.json> --format md|json|html`);
     console.log(`  barro daily [--force]`);
+    console.log(`  barro cookbook`);
     console.log(`  barro verify <pizza.final.json>`);
     console.log(`  barro previews --all`);
     console.log(`  barro previews <pizza.json>...`);
