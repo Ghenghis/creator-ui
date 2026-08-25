@@ -1,0 +1,523 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/respin/6000.0.51f1-a206c6c19c75' branch; Version is '6000.0.51f1 (01c3ff5872c5) revision 115711'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26100) 64bit Professional' Language: 'en' Physical Memory: 130986 MB
+BatchMode: 0, IsHumanControllingUs: 1, StartBugReporterOnCrash: 1, Is64bit: 1
+Date: 2026-08-25T20:13:28Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Admin" at "2026-08-25T20:13:28.9389002Z"
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Unity.exe
+-projectPath
+S:/Unity_Games/PC3 - Pizza Creator/creator-ui
+-logFile
+S:/Unity_Games/PC3 - Pizza Creator/creator-ui/unity-editor.log
+Successfully changed project path to: S:/Unity_Games/PC3 - Pizza Creator/creator-ui
+S:/Unity_Games/PC3 - Pizza Creator/creator-ui
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [42304]  Target information:
+
+Player connection [42304]  * "[IP] 192.168.0.3 [Port] 55504 [Flags] 2 [Guid] 1779665896 [EditorId] 1779665896 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-11ANAB1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [42304]  * "[IP] 192.168.63.1 [Port] 55504 [Flags] 2 [Guid] 1779665896 [EditorId] 1779665896 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-11ANAB1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [42304]  * "[IP] 192.168.206.1 [Port] 55504 [Flags] 2 [Guid] 1779665896 [EditorId] 1779665896 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-11ANAB1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [42304]  * "[IP] 100.117.190.97 [Port] 55504 [Flags] 2 [Guid] 1779665896 [EditorId] 1779665896 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-11ANAB1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [42304] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [42304] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 47664, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              0967658c9ed445829d4b67b83b39e4c2
+  Correlation Id:          80c3e250cd5b5dca706dc99108c86b76
+  External correlation Id: 7744920045124133357
+  Machine Id:              Tlswh8Xfo8FKusukNXMUyxl9S+k=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Admin" (connect: 0.00s, validation: 0.00s, handshake: 0.07s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Admin-notifications" at "2026-08-25T20:13:29.0095312Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-DAFR-DCJW-NQQR-A2YQ-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4499876-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.02
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-DAFR-DCJW-NQQR-A2YQ-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4499876-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 0.10s
+[Package Manager] Connected to IPC stream "Upm-20072" after 0.4 seconds.
+Library Redirect Path: Library/
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 40 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.toolchain.win-x86_64-linux-x86_64@2.0.11 (location: S:\Unity_Games\PC3 - Pizza Creator\creator-ui\Library\PackageCache\com.unity.toolchain.win-x86_64-linux-x86_64@3c4c356523ed)
+    com.unity.sysroot@2.0.10 (location: S:\Unity_Games\PC3 - Pizza Creator\creator-ui\Library\PackageCache\com.unity.sysroot@7bbbb9339c14)
+    com.unity.sysroot.linux-x86_64@2.0.9 (location: S:\Unity_Games\PC3 - Pizza Creator\creator-ui\Library\PackageCache\com.unity.sysroot.linux-x86_64@1998d1c7730e)
+  Built-in packages:
+    com.unity.multiplayer.center@1.0.0 (location: S:\Unity_Games\PC3 - Pizza Creator\creator-ui\Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546)
+    com.unity.modules.accessibility@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.accessibility)
+    com.unity.modules.ai@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.hierarchycore)
+  Embedded packages:
+    com.unity.ext.nunit@file:S:\Unity_Games\PC3 - Pizza Creator\creator-ui\Packages\com.unity.ext.nunit (location: S:\Unity_Games\PC3 - Pizza Creator\creator-ui\Packages\com.unity.ext.nunit)
+    com.unity.test-framework@file:S:\Unity_Games\PC3 - Pizza Creator\creator-ui\Packages\com.unity.test-framework (location: S:\Unity_Games\PC3 - Pizza Creator\creator-ui\Packages\com.unity.test-framework)
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+[Subsystems] No new subsystems found in resolved package list.
+Package Manager log level set to [2]
+[Package Manager] Done registering packages in 0.08 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.51f1 (01c3ff5872c5)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.51f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path S:/Unity_Games/PC3 - Pizza Creator/creator-ui/Assets
+kGfxThreadingModeSplitJobs is not supported on Direct3D 11. Reverting to kGfxThreadingModeThreaded instead.
+GfxDevice: creating device client; kGfxThreadingModeThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 (ID=0x2504)
+    Vendor:   NVIDIA
+    VRAM:     12113 MB
+    Driver:   32.0.16.1088
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.51f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.51f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.51f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56072
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.51f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.51f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-DAFR-DCJW-NQQR-A2YQ-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4499876-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.51f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-DAFR-DCJW-NQQR-A2YQ-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4499876-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.51f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.51f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.013802 seconds.
+- Loaded All Assemblies, in  0.420 seconds
+Native extension for LinuxStandalone target not found
+Native extension for Android target not found
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.376 seconds
+Domain Reload Profiling: 793ms
+	BeginReloadAssembly (134ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (39ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (65ms)
+	LoadAllAssembliesAndSetupDomain (167ms)
+		LoadAssemblies (131ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (162ms)
+			TypeCache.Refresh (161ms)
+				TypeCache.ScanAssembly (145ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (376ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (341ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (117ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (55ms)
+			ProcessInitializeOnLoadAttributes (107ms)
+			ProcessInitializeOnLoadMethodAttributes (59ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-DAFR-DCJW-NQQR-A2YQ-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4499876-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:80
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: S:\Unity_Games\PC3 - Pizza Creator\creator-ui\
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc - - 200 - application/grpc 37.0971ms
+Starting: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: S:/Unity_Games/PC3 - Pizza Creator/creator-ui
+Starting: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Tools\netcorerun\netcorerun.exe "C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Tools\BuildPipeline\ScriptCompilationBuildProgram.exe" "Library/Bee/1900b0aE.dag.json" "Library/Bee/1900b0aE-inputdata.json" "Library\Bee\buildprogram0.traceevents"
+ExitCode: 4 Duration: 0s180ms
+Rebuilding DAG because FileSignature timestamp changed: Library/Bee/1900b0aE-inputdata.json
+*** Tundra requires additional run (0.13 seconds), 0 items updated, 238 evaluated
+WorkingDir: S:/Unity_Games/PC3 - Pizza Creator/creator-ui
+ExitCode: 0 Duration: 0s367ms
+Starting: C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --dagfilejson="Library\Bee\1900b0aE.dag.json" --profile="Library/Bee/backend2.traceevents" ScriptAssemblies
+WorkingDir: S:/Unity_Games/PC3 - Pizza Creator/creator-ui
+ExitCode: 0 Duration: 0s141ms
+Finished compiling graph: 241 nodes, 2292 flattened edges (2164 ToBuild, 26 ToUse), maximum node priority 112
+*** Tundra build success (0.10 seconds), 0 items updated, 238 evaluated
+AssetDatabase: script compilation time: 1.174192s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.524 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+Native extension for Android target not found
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.452 seconds
+Domain Reload Profiling: 971ms
+	BeginReloadAssembly (299ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (12ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (145ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (33ms)
+	LoadAllAssembliesAndSetupDomain (142ms)
+		LoadAssemblies (217ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (30ms)
+			TypeCache.Refresh (22ms)
+				TypeCache.ScanAssembly (16ms)
+			BuildScriptInfoCaches (5ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (452ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (339ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (40ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (100ms)
+			ProcessInitializeOnLoadAttributes (161ms)
+			ProcessInitializeOnLoadMethodAttributes (26ms)
+			AfterProcessingInitializeOnLoad (10ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (13ms)
+Asset Pipeline Refresh (id=06b26d4aa90c33247b7e47c26f522e0b): Total: 2.507 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=766 ms
+		Asset DB Callback time: managed=13 ms, native=0 ms
+		Scripting: domain reloads=1, domain reload time=527 ms, compile time=1177 ms, other=20 ms
+		Project Asset Count: scripts=207, non-scripts=145
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.002ms
+	InvokePackagesCallback: 2.963ms
+	ApplyChangesToAssetFolders: 0.384ms
+	Scan: 149.120ms
+	OnSourceAssetsModified: 0.003ms
+	CategorizeAssetsWithTransientArtifact: 6.676ms
+	ProcessAssetsWithTransientArtifactChanges: 4.931ms
+	CategorizeAssets: 4.505ms
+	ImportOutOfDateAssets: 453.356ms (-724.474ms without children)
+		CompileScripts: 1177.495ms
+		ReloadNativeAssets: 0.001ms
+		UnloadImportedAssets: 0.112ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.046ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.175ms
+	PostProcessAllAssets: 13.716ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.001ms
+	UnloadStreamsBegin: 1.400ms
+	PersistCurrentRevisions: 0.009ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 1.530ms
+	Untracked: 1869.924ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 11.670ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-creator-ui
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 492 unused Assets / (1.1 MB). Loaded Objects now: 1017.
+Memory consumption went from 120.2 MB to 119.2 MB.
+Total: 4.933800 ms (FindLiveObjects: 0.084800 ms CreateObjectMapping: 0.027600 ms MarkObjects: 4.269500 ms  DeleteObjects: 0.551100 ms)
+
+[LAYOUT] About to load C:/Users/Admin/AppData/Roaming/Unity/Editor-5.x/Preferences\Layouts\current\default-6000.dwlt, keepMainWindow=False
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+[LAYOUT] Removed un-parented EditorWindow while reading window layout window #16, type=UnityEditor.FallbackEditorWindow instanceID=19768
+[LAYOUT] Removed un-parented EditorWindow while reading window layout window #17, type=UnityEditor.FallbackEditorWindow instanceID=19770
+[LAYOUT] About to save layout S:\Unity_Games\PC3 - Pizza Creator\creator-ui\UserSettings\Layouts\default-6000.dwlt
+[LAYOUT] About to save layout C:/Users/Admin/AppData/Roaming/Unity/Editor-5.x/Preferences\Layouts\current\default-6000.dwlt
+[MODES] ModeService[default].InitializeCurrentMode
+[MODES] ModeService[default].RaiseModeChanged(default, default)
+IsTimeToCheckForNewEditor: Update time 1787402726 current 1787688814
+Unity is running with Administrator privileges, which is not supported. Unity executes scripts and binary libraries in your project that may originate from third party sources and potentially be harmful to your computer. Unity may also execute scripts and binary libraries that are still under development and not yet fully tested. Running Unity with Administrator privileges may lead to catastrophic consequences, including but not limited to accidental data loss, change of global system settings or even bricking your device.
+<RI> Initializing input.
+<RI> Input initialized.
+[Project] Loading completed in 12.312 seconds
+	Project init time: 				4.715 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.373 seconds
+		Asset Database init time: 		0.211 seconds
+		Global illumination init time: 	0.003 seconds
+		Assemblies load time: 			0.823 seconds
+		Unity extensions init time: 	0.003 seconds
+		Asset Database refresh time: 	2.511 seconds
+	Scene opening time: 			0.885 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1787688814581,"processId":20072,"projectLoad":12.3124456,"projectInit":4.715365,"templateInit":0.0,"packageManagerInit":0.3733504,"assetDatabaseInit":0.2114057,"globalIlluminationInit":0.0028015,"assembliesLoad":0.8231251,"unityExtensionsInit":0.0028182,"assetDatabaseRefresh":2.5111289,"sceneOpening":0.8849743}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1787688814581,"processId":20072,"editorVersion":"6000.0.51f1 (01c3ff5872c5)","branch":"6000.0/respin/6000.0.51f1-a206c6c19c75","buildType":"Release","platform":"Windows"}
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Asset Pipeline Refresh (id=456165308b0422447b89a01b1d8c9411): Total: 0.063 seconds - Initiated by RefreshV2(AllowForceSynchronousImport)
+EditorUpdateCheck: Failed The requested URL returned error: 404
+Asset Pipeline Refresh (id=fffd61efc9c812f4c916d2a16d836671): Total: 0.012 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Created GICache directory at C:/Users/Admin/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.051s, timestamps: [14.981 - 15.032]
+[Licensing::Client] Successfully updated the access token
+[Licensing::Module] Successfully updated access token: "QkuyEAzT"... (expires: 2027-08-25T20:13:37Z)
+[Licensing::Client] Successfully updated the access token
+[Licensing::Module] Successfully updated access token: "QkuyEAzT"... (expires: 2027-08-25T20:13:38Z)
+[Licensing::Client] Successfully resolved entitlement details
+Android Extension - Scanning For ADB Devices 4394 ms
+TrimDiskCacheJob: Current cache size 0mb
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+<RI> Initialized touch support.
+Asset Pipeline Refresh (id=38d53b79486854044a71f0034cd668e5): Total: 0.036 seconds - Initiated by RefreshV2(AllowForceSynchronousImport)
+<RI> Initialized touch support.
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-DAFR-DCJW-NQQR-A2YQ-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4499876-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.502 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+Native extension for Android target not found
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.991 seconds
+Domain Reload Profiling: 1489ms
+	BeginReloadAssembly (402ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (198ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (60ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (27ms)
+	LoadAllAssembliesAndSetupDomain (25ms)
+		LoadAssemblies (104ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (17ms)
+			TypeCache.Refresh (3ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (11ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (991ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (252ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (35ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (89ms)
+			ProcessInitializeOnLoadAttributes (92ms)
+			ProcessInitializeOnLoadMethodAttributes (24ms)
+			AfterProcessingInitializeOnLoad (10ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (432ms)
+Asset Pipeline Refresh (id=80c05d76ddb2ed2479a973595bd9f298): Total: 1.561 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=1034 ms
+		Asset DB Callback time: managed=10 ms, native=0 ms
+		Scripting: domain reloads=1, domain reload time=514 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=207, non-scripts=145
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 2.396ms
+	ApplyChangesToAssetFolders: 0.239ms
+	Scan: 0.001ms
+	OnSourceAssetsModified: 0.002ms
+	CategorizeAssetsWithTransientArtifact: 0.002ms
+	ProcessAssetsWithTransientArtifactChanges: 0.333ms
+	CategorizeAssets: 2.568ms
+	ImportOutOfDateAssets: 993.247ms (990.582ms without children)
+		CompileScripts: 1.349ms
+		CollectScriptTypesHashes: 0.001ms
+		ReloadNativeAssets: 0.000ms
+		UnloadImportedAssets: 1.130ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.045ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.140ms
+	PostProcessAllAssets: 10.349ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.017ms
+	UnloadStreamsBegin: 0.049ms
+	PersistCurrentRevisions: 0.008ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 0.358ms
+	Untracked: 552.025ms
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.670 ms
+	Integration:            17.440 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.014 ms
+	Total Operation Time:   18.126 ms
+Asset Pipeline Refresh (id=ef753d6e1fa02c448b6dc9608b024273): Total: 0.025 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
