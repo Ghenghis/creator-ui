@@ -2,7 +2,7 @@
 import base64, json, math, sys, os
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-with open(r"output/whitepizza-1787674178295.final.json") as f:
+with open(r"output/hawaiiantest-1787675789401.final.json") as f:
     pizza = json.load(f)
 
 W, H = 320, 320
@@ -148,6 +148,6 @@ img.save(buf, format='PNG', optimize=True)
 b64 = base64.b64encode(buf.getvalue()).decode('ascii')
 
 pizza['Texture'] = b64
-with open(r"output/whitepizza-1787674178295.final.json", 'w') as f:
+with open(r"output/hawaiiantest-1787675789401.final.json", 'w') as f:
     json.dump(pizza, f, indent=2)
 print(f"Embedded realistic texture ({len(b64)} chars) into {pizza['ID']}")
