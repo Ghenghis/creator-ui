@@ -1,0 +1,43 @@
+{
+  "ID": "PestoGoat-1787686289567",
+  "Ingredients": [
+    {
+      "IngredientID": "Chicken",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 1
+    },
+    {
+      "IngredientID": "Tomato",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 0
+    }
+  ],
+  "DoughPositions": [
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  ],
+  "ProfitFactor": 0.72,
+  "Owner": null,
+  "Texture": ""
+}

@@ -139,20 +139,26 @@ namespace creator_ui.Chat
             nav.labPanel = _lab;
             nav.designerPanel = _designer;
 
-            // Wire panel controllers with LLM client
+            // Wire panel controllers with LLM client + Barros + catalog
             var chefVoice = gameObject.AddComponent<ChefVoicePanel>();
             chefVoice.llmClient = client;
+            chefVoice.barros = barros;
+            chefVoice.catalogJsonArray = catalogJsonArray;
             chefVoice.nameDialog = nameDialogComp;
             var crew = gameObject.AddComponent<CrewPanel>();
             crew.llmClient = client;
-            crew.nameDialog = nameDialogComp;
             crew.barros = barros;
             crew.catalogJsonArray = catalogJsonArray;
+            crew.nameDialog = nameDialogComp;
             var lab = gameObject.AddComponent<LabPanel>();
             lab.llmClient = client;
+            lab.barros = barros;
+            lab.catalogJsonArray = catalogJsonArray;
             lab.nameDialog = nameDialogComp;
             var designer = gameObject.AddComponent<DesignerPanel>();
             designer.llmClient = client;
+            designer.barros = barros;
+            designer.catalogJsonArray = catalogJsonArray;
             designer.nameDialog = nameDialogComp;
 
             Debug.Log("[CreatorUIBootstrap] Creator UI ready. 4 chat panels + NameDialog + Sidebar wired to Barros+LMStudio.");

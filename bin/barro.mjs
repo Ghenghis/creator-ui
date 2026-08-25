@@ -175,8 +175,8 @@ async function verify() {
   const reportPath = `C:/Users/Admin/AppData/Local/Temp/barro-vr-${Date.now()}.json`;
   try {
     const out = execSync(
-      `cd "${verifierDir}" && dotnet run --project verifier/PizzaAgent.Verify.csproj -- --pizza "${absPath}" --game-dir "${gameDir}" --out "${reportPath}"`,
-      { stdio: 'pipe', timeout: 60000 }
+      `dotnet run --project verifier/PizzaAgent.Verify.csproj -- --pizza "${absPath}" --game-dir "${gameDir}" --out "${reportPath}"`,
+      { stdio: 'pipe', timeout: 60000, cwd: verifierDir }
     ).toString();
     const report = JSON.parse(readFileSync(reportPath, 'utf-8'));
     if (report.passed) {
@@ -289,6 +289,89 @@ async function favorites() {
   }
 }
 
+async function listRecipes() {
+  const files = readdirSync(outDir).filter(f => f.endsWith('.final.json')).sort();
+  if (files.length === 0) { console.log('No recipes yet. Run `barro compose` first.'); return; }
+  console.log(`� ${files.length} recipe(s) in ${outDir}:`);
+  for (const f of files) {
+    try {
+      const p = JSON.parse(readFileSync(join(outDir, f), 'utf-8'));
+      const hasTex = p.Texture ? '🖼' : '○';
+      const date = f.match(/-(\d{13})\.final\.json/)?.[1];
+      const dt = date ? new Date(parseInt(date)).toISOString().slice(0, 19).replace('T', ' ') : '?';
+      const ings = (p.Ingredients || []).map(i => i.IngredientID).slice(0, 3).join(', ');
+      console.log(`  ${hasTex} ${dt}  ${p.ID.padEnd(36)}  ${(p.Ingredients||[]).length} ing  [${ings}${(p.Ingredients||[]).length > 3 ? '...' : ''}]`);
+    } catch (e) { console.log(`  �  ${f}: ${e.message.slice(0, 60)}`); }
+  }
+}
+
+async function pipeline() {
+  // Run full pipeline in one shot: compose + verify + previews
+  console.log('🚀 Running full Barro pipeline...\n');
+  if (flags._positional?.length) {
+    flags.prompt = flags._positional[0];
+  } else {
+    flags.prompt = 'Make a margherita pizza with fresh basil';
+  }
+  flags.name = flags.name || `Pipeline-${Date.now()}`;
+  flags.heat = flags.heat || 'Medium';
+  await compose();
+  // Auto-verify the newest output
+  const files = readdirSync(outDir).filter(f => f.endsWith('.final.json') && f.includes(flags.name.toLowerCase().replace(/[^a-z0-9]/g, '-'))).sort();
+  if (files.length > 0) {
+    const newest = join(outDir, files[files.length - 1]);
+    console.log(`\n--- Verifying ${newest} ---`);
+    flags._positional = [newest];
+    await verify();
+    // Auto-render texture
+    console.log(`\n--- Rendering texture ---`);
+    flags._positional = [newest];
+    await previews();
+  }
+  console.log('\n✅ Pipeline complete');
+}
+
+async function exportRecipe() {
+  const src = flags._positional?.[0];
+  const format = (flags.format || 'md').toLowerCase();
+  if (!src) { console.error('Usage: barro export <pizza.json> --format md|json|html'); process.exit(1); }
+  if (!existsSync(src)) { console.error(`Not found: ${src}`); process.exit(1); }
+  const p = JSON.parse(readFileSync(src, 'utf-8'));
+  const baseName = basename(src, '.final.json');
+  const outPath = join(outDir, `${baseName}.${format === 'md' ? 'md' : format === 'html' ? 'html' : 'json'}`);
+  if (format === 'md') {
+    const md = `# ${p.ID}\n\n` +
+      `**Ingredients:** ${(p.Ingredients||[]).length}\n\n` +
+      (p.Ingredients || []).map(i => `- ${i.IngredientID} (${['','Large','Medium','Small'][i.Size] || '?'})`).join('\n') + '\n\n' +
+      `**ProfitFactor:** ${p.ProfitFactor}\n` +
+      (p.Texture ? `\n![preview](../evidence/previews/${baseName}.png)\n` : '');
+    writeFileSync(outPath, md);
+  } else if (format === 'html') {
+    const html = `<!DOCTYPE html><html><head><title>${p.ID}</title><style>body{font-family:Georgia;background:#f5e9d7;color:#3a2418;padding:32px;}</style></head><body><h1>${p.ID}</h1><img src="${p.Texture ? `../evidence/previews/${baseName}.png` : ''}" style="max-width:400px"/><ul>${(p.Ingredients||[]).map(i => `<li>${i.IngredientID} ${['','Large','Medium','Small'][i.Size] || '?'}</li>`).join('')}</ul></body></html>`;
+    writeFileSync(outPath, html);
+  } else {
+    writeFileSync(outPath, JSON.stringify(p, null, 2));
+  }
+  console.log(`📤 Exported: ${outPath}`);
+}
+
+async function dailySpecial() {
+  // Generate the day's special (cron-friendly)
+  const today = new Date().toISOString().slice(0, 10);
+  const dailyFile = join(outDir, `daily-${today}.final.json`);
+  if (existsSync(dailyFile) && !flags.force) {
+    console.log(`📅 Today's special already exists: ${dailyFile}`);
+    const p = JSON.parse(readFileSync(dailyFile, 'utf-8'));
+    console.log(`   ${p.ID} — ${(p.Ingredients||[]).length} ingredients`);
+    return;
+  }
+  console.log(`📅 Generating daily special for ${today}...`);
+  flags._positional = ['Make a creative artisanal pizza with seasonal ingredients'];
+  flags.name = `Daily-${today}`;
+  flags.heat = 'Medium';
+  await compose();
+}
+
 // === Dispatch ===
 console.log('');
 switch (cmd) {
@@ -300,6 +383,10 @@ switch (cmd) {
   case 'previews': await previews(); break;
   case 'special': await special(); break;
   case 'favorites': await favorites(); break;
+  case 'list': await listRecipes(); break;
+  case 'pipeline': await pipeline(); break;
+  case 'export': await exportRecipe(); break;
+  case 'daily': await dailySpecial(); break;
   default:
     console.log(`Barro's Pizza CLI`);
     console.log(`Usage:`);
@@ -307,6 +394,10 @@ switch (cmd) {
     console.log(`  barro lab --tags "spicy,budget,under-15" [--count 3]`);
     console.log(`  barro special [--seed X]`);
     console.log(`  barro favorites add|list|show <file|name>`);
+    console.log(`  barro list`);
+    console.log(`  barro pipeline [prompt] [--name X]`);
+    console.log(`  barro export <pizza.json> --format md|json|html`);
+    console.log(`  barro daily [--force]`);
     console.log(`  barro verify <pizza.final.json>`);
     console.log(`  barro previews --all`);
     console.log(`  barro previews <pizza.json>...`);

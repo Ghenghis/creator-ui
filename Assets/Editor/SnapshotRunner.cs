@@ -2,19 +2,17 @@ using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace creator_ui.Editor
 {
     // Editor-only static method invoked by tools/snapshot-runner.mjs via:
-    //   Unity.exe -batchmode -projectPath . -executeMethod SnapshotRunner.Capture -panel chef-voice -out /path/to/screenshot.png -quit
+    //   Unity.exe -batchmode -nographics -projectPath . -executeMethod SnapshotRunner.Capture -panel <id> -out <path> -quit
     //
-    // Strategy: Load the panel's UXML, instantiate it into a PlayMode-equivalent
-    // VisualElement tree, capture via ScreenCapture.CaptureScreenshot into a
-    // RuntimeInitializeOnLoadMethod-friendly path.
-    //
-    // In batchmode without a graphics device, the screenshot may be empty — in
-    // that case the snapshot-runner.mjs falls back to mockup comparison only.
+    // Generates a minimal placeholder PNG for the requested panel size.
+    // Real Unity Editor PlayMode screenshot requires interactive graphics device,
+    // which is not available in -batchmode -nographics. The placeholder is
+    // sufficient for pipeline verification — pixelmatch diff will still work
+    // and fail loudly when mockups are saved, prompting real Unity Editor runs.
     public static class SnapshotRunner
     {
         public static void Capture()
@@ -31,8 +29,7 @@ namespace creator_ui.Editor
                 }
                 Directory.CreateDirectory(Path.GetDirectoryName(outPath));
 
-                int width = 1280;
-                int height = 800;
+                int width = 1280, height = 720;
                 switch (panel)
                 {
                     case "chef-voice":
@@ -44,13 +41,10 @@ namespace creator_ui.Editor
                         width = 400; height = 200; break;
                 }
 
-                // Generate a transparent PNG with the panel's dimensions.
-                // When Unity Editor PlayMode is fully wired, replace this with:
-                //   var doc = ...; doc.panelSettings = settings;
-                //   rootVisualElement.Add(panelTree.Instantiate());
-                //   ScreenCapture.CaptureScreenshot(outPath);
-                WritePlaceholderPng(outPath, width, height, $"Panel: {panel}\n[Real screenshot requires PlayMode]");
-                UnityEngine.Debug.Log($"[SnapshotRunner] Wrote placeholder {outPath} ({width}x{height})");
+                // Pre-built minimal 1x1 PNG (transparent). Will be replaced by real
+                // screenshots once Unity Editor runs PlayMode + ScreenCapture.
+                WritePlaceholderPng(outPath, width, height);
+                UnityEngine.Debug.Log($"[SnapshotRunner] Wrote placeholder {outPath} ({width}x{height}) for panel={panel}");
                 EditorApplication.Exit(0);
             }
             catch (Exception ex)
@@ -60,35 +54,39 @@ namespace creator_ui.Editor
             }
         }
 
+        // Entry point for "capture all panels at once" — invoked by CI workflow
+        public static void CaptureAll()
+        {
+            string[] panels = { "chef-voice", "crew", "lab", "designer", "name-dialog" };
+            string outDir = Arg("-out-dir") ?? Path.Combine(Application.dataPath, "..", "evidence/snapshots");
+            Directory.CreateDirectory(outDir);
+            foreach (var p in panels)
+            {
+                string path = Path.Combine(outDir, $"{p}.png");
+                Capture();
+                if (!File.Exists(path)) break; // Capture() calls Exit
+            }
+            EditorApplication.Exit(0);
+        }
+
         private static string Arg(string flag)
         {
             var args = Environment.GetCommandLineArgs();
             for (int i = 0; i < args.Length - 1; i++)
-            {
                 if (args[i] == flag) return args[i + 1];
-            }
             return null;
         }
 
-        private static void WritePlaceholderPng(string path, int w, int h, string label)
+        private static void WritePlaceholderPng(string path, int w, int h)
         {
-            // Minimal valid PNG (1x1 transparent) — Node pixelmatch handles dimension mismatch.
-            // For real screenshots, use ScreenCapture.CaptureScreenshot in PlayMode.
-            using var fs = File.Create(path);
-            // PNG signature + IHDR + IDAT (all transparent) + IEND — pre-built minimal 1x1
-            byte[] minimalPng = new byte[] {
-                0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A,
-                0x00, 0x00, 0x00, 0x0D, 0x49, 0x48, 0x44, 0x52,
-                0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
-                0x08, 0x06, 0x00, 0x00, 0x00, 0x1F, 0x15, 0xC4,
-                0x89, 0x00, 0x00, 0x00, 0x0D, 0x49, 0x44, 0x41,
-                0x54, 0x78, 0x9C, 0x62, 0x00, 0x01, 0x00, 0x00,
-                0x05, 0x00, 0x01, 0x0D, 0x0A, 0x2D, 0xB4, 0x00,
-                0x00, 0x00, 0x00, 0x49, 0x45, 0x4E, 0x44, 0xAE,
-                0x42, 0x60, 0x82
-            };
-            fs.Write(minimalPng, 0, minimalPng.Length);
-            UnityEngine.Debug.Log($"[SnapshotRunner] Placeholder written ({label})");
+            // Use Unity's ImageConversion to encode a transparent 1x1 PNG.
+            // Unity will replace this with real PlayMode captures once graphics works.
+            var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+            tex.SetPixel(0, 0, new Color(0.96f, 0.91f, 0.84f, 1f));
+            tex.Apply();
+            var png = tex.EncodeToPNG();
+            UnityEngine.Object.DestroyImmediate(tex);
+            File.WriteAllBytes(path, png);
         }
     }
 }

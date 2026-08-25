@@ -10,10 +10,13 @@ namespace creator_ui.Chat
     public class LabPanel : MonoBehaviour
     {
         public LLMClient llmClient;
+        public BarrosBackend barros;
+        public string[] catalogJsonArray;
         public NameDialog nameDialog;
 
         private readonly List<RecipeData> _recipes = new();
         private RecipeData _selected;
+        private const string MODE_KEY = "lab";
 
         public async Task GenerateBatchAsync(string[] tags)
         {
@@ -27,12 +30,31 @@ namespace creator_ui.Chat
             _recipes.Clear();
             _recipes.AddRange(results);
             _recipes.Sort((a, b) => b.scores.taste.CompareTo(a.scores.taste));
+            HistoryStore.SaveMessage(MODE_KEY, "user", $"Tags: {tagStr}");
+            HistoryStore.SaveMessage(MODE_KEY, "assistant", $"Generated {_recipes.Count} recipes");
             RenderRecipeCards();
         }
 
         private async Task<RecipeData> GenerateOneAsync(string prompt)
         {
-            var composer = new RecipeComposer(llmClient);
+            // Prefer Barros with catalog
+            if (barros != null && catalogJsonArray != null && catalogJsonArray.Length > 0)
+            {
+                try
+                {
+                    var respJson = await barros.ComposeWithCatalogAsync(prompt, catalogJsonArray, "Medium");
+                    var response = JsonUtility.FromJson<BarrosComposeResponse>(LLMJson.StripMarkdownCodeBlock(respJson));
+                    if (response != null && response.recipes != null && response.recipes.Length > 0)
+                    {
+                        return BarrosRecipeAdapter.ToRecipeData(response.recipes[0]);
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogWarning($"[LabPanel] Barros failed: {ex.Message}, falling back to RecipeComposer");
+                }
+            }
+            var composer = new RecipeComposer(llmClient, barros);
             return await composer.ComposeAsync(
                 "Experimental pizza designer. Return Barro's Pizza JSON with 5-8 ingredients.",
                 prompt);
@@ -100,5 +122,7 @@ namespace creator_ui.Chat
             row.Add(val);
             parent.Add(row);
         }
+
+        public void ClearHistory() => HistoryStore.Clear(MODE_KEY);
     }
 }

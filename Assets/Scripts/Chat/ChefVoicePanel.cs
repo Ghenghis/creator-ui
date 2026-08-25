@@ -9,17 +9,22 @@ namespace creator_ui.Chat
     public class ChefVoicePanel : MonoBehaviour
     {
         public LLMClient llmClient;
+        public BarrosBackend barros;
+        public string[] catalogJsonArray;
         public NameDialog nameDialog;
 
         private const string SYSTEM_PROMPT =
-            @"You are Chef AI for Barro's Pizza Creator. Help the user design a pizza. Return JSON with fields: name, dough:{size,shape}, ingredients:[{id, amount_g, position:[x,y,z], rotation:[x,y,z], size}]. Ingredient IDs MUST be from the catalog.";
+            @"You are Chef AI for Barro's Pizza Creator. Help the user design a pizza. Return Barro's Pizza JSON with fields: name, dough:{size,shape}, ingredients:[{id, amount_g, position:[x,y,z], rotation:[x,y,z], size}]. Ingredient IDs MUST be from the catalog.";
+        private const string MODE_KEY = "chef-voice";
 
         private RecipeData _currentRecipe;
         private bool _isComposing;
 
         private void OnEnable()
         {
-            var root = GetComponent<UIDocument>().rootVisualElement;
+            var doc = GetComponent<UIDocument>();
+            if (doc == null) return;
+            var root = doc.rootVisualElement;
             var applyBtn = root.Q<Button>("chef-voice__apply");
             if (applyBtn != null) applyBtn.clicked += OnApplyClicked;
             var mildBtn = root.Q<Button>("heat-mild");
@@ -34,13 +39,37 @@ namespace creator_ui.Chat
         {
             if (_isComposing) return;
             _isComposing = true;
-            var root = GetComponent<UIDocument>().rootVisualElement;
-            var userLabel = root.Q<Label>("chef-voice__msg-user-text");
-            if (userLabel != null) userLabel.text = userText;
             try
             {
-                var composer = new RecipeComposer(llmClient);
-                _currentRecipe = await composer.ComposeAsync(SYSTEM_PROMPT, userText);
+                HistoryStore.SaveMessage(MODE_KEY, "user", userText);
+                var root = GetComponent<UIDocument>().rootVisualElement;
+                var userLabel = root.Q<Label>("chef-voice__msg-user-text");
+                if (userLabel != null) userLabel.text = userText;
+
+                RecipeData recipe = null;
+                if (barros != null && catalogJsonArray != null && catalogJsonArray.Length > 0)
+                {
+                    try
+                    {
+                        var respJson = await barros.ComposeWithCatalogAsync(userText, catalogJsonArray, "Medium");
+                        var response = JsonUtility.FromJson<BarrosComposeResponse>(LLMJson.StripMarkdownCodeBlock(respJson));
+                        if (response != null && response.recipes != null && response.recipes.Length > 0)
+                        {
+                            recipe = BarrosRecipeAdapter.ToRecipeData(response.recipes[0]);
+                        }
+                    }
+                    catch (System.Exception ex)
+                    {
+                        Debug.LogWarning($"[ChefVoicePanel] Barros failed: {ex.Message}, falling back to LLMClient");
+                    }
+                }
+                if (recipe == null)
+                {
+                    var composer = new RecipeComposer(llmClient, barros);
+                    recipe = await composer.ComposeAsync(SYSTEM_PROMPT, userText);
+                }
+                HistoryStore.SaveMessage(MODE_KEY, "assistant", JsonUtility.ToJson(recipe));
+                _currentRecipe = recipe;
                 int ingCount = _currentRecipe.ingredients?.Length ?? 0;
                 var aiLabel = root.Q<Label>("chef-voice__msg-ai-text");
                 if (aiLabel != null) aiLabel.text = $"I can build that. Medium heat or hot? ({ingCount} ingredients)";
@@ -89,6 +118,7 @@ namespace creator_ui.Chat
             if (mild != null) mild.EnableInClassList("btn-chip--active", heat == "Mild");
             if (med != null) med.EnableInClassList("btn-chip--active", heat == "Medium");
             if (hot != null) hot.EnableInClassList("btn-chip--active", heat == "Hot");
+            HistoryStore.SaveMessage(MODE_KEY, "user", $"[heat] {heat}");
         }
 
         private void OnApplyClicked()
@@ -96,5 +126,7 @@ namespace creator_ui.Chat
             if (_currentRecipe == null) return;
             nameDialog?.Show(_currentRecipe);
         }
+
+        public void ClearHistory() => HistoryStore.Clear(MODE_KEY);
     }
 }
