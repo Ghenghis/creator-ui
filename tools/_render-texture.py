@@ -2,7 +2,7 @@
 import base64, json, sys
 from PIL import Image, ImageDraw, ImageFont
 
-with open(r"S:\\Unity_Games\\PC3 - Pizza Creator\\creator-ui\\output\\hawaiian-1787670956814.final.json") as f:
+with open(r"S:\\Unity_Games\\PC3 - Pizza Creator\\creator-ui\\output\\diavola-1787671335647.final.json") as f:
     pizza = json.load(f)
 
 W, H = 256, 256
@@ -52,6 +52,6 @@ img.save(buf, format='PNG')
 b64 = base64.b64encode(buf.getvalue()).decode('ascii')
 
 pizza['Texture'] = b64
-with open(r"S:\\Unity_Games\\PC3 - Pizza Creator\\creator-ui\\output\\hawaiian-1787670956814.final.json", 'w') as f:
+with open(r"S:\\Unity_Games\\PC3 - Pizza Creator\\creator-ui\\output\\diavola-1787671335647.final.json", 'w') as f:
     json.dump(pizza, f, indent=2)
 print(f"Embedded texture ({len(b64)} chars) into {pizza['ID']}")

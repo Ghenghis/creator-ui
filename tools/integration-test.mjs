@@ -82,11 +82,15 @@ log(`LMStudio: ${await checkBackend(lmstudioBase + '/v1/models', 'LMStudio')}`);
 
 let allPassed = true;
 try {
-  const themes = [
-    { prompt: 'Make a margherita pizza. Tomato sauce, mozzarella, fresh basil.', name: 'Margherita' },
-    { prompt: 'Spicy diavola with hot salami and chili oil.', name: 'Diavola' },
-    { prompt: 'Hawaiian with pineapple and ham.', name: 'Hawaiian' }
-  ];
+  const customPrompt = process.env.INTEGRATION_PROMPT;
+  const customName = process.env.INTEGRATION_NAME;
+  const themes = customPrompt
+    ? [{ prompt: customPrompt, name: customName || customPrompt.split(' ').slice(0, 2).join('') }]
+    : [
+        { prompt: 'Make a margherita pizza. Tomato sauce, mozzarella, fresh basil.', name: 'Margherita' },
+        { prompt: 'Spicy diavola with hot salami and chili oil.', name: 'Diavola' },
+        { prompt: 'Hawaiian with pineapple and ham.', name: 'Hawaiian' }
+      ];
 
   for (const t of themes) {
     log(`\n--- ${t.name} ---`);
