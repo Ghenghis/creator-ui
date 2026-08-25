@@ -1,12 +1,15 @@
 {
-    "name": "creator_ui.PlayMode.Tests",
-    "rootNamespace": "creator_ui.tests.PlayMode",
+    "name": "creator_ui.EditMode.Tests",
+    "rootNamespace": "creator_ui.tests.EditMode",
     "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
         "creator_ui"
     ],
-    "includePlatforms": [],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
