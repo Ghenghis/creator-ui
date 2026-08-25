@@ -34,6 +34,20 @@ namespace creator_ui.tests.EditMode
         }
 
         [Test]
+        public void BarrosBackend_Constructs()
+        {
+            var backend = new BarrosBackend("http://127.0.0.1:48173");
+            Assert.AreEqual("http://127.0.0.1:48173", backend.BaseUrl);
+        }
+
+        [Test]
+        public void BarrosBackend_TrimsTrailingSlash()
+        {
+            var backend = new BarrosBackend("http://127.0.0.1:48173/");
+            Assert.AreEqual("http://127.0.0.1:48173", backend.BaseUrl);
+        }
+
+        [Test]
         public void LMStudioBackend_Constructs()
         {
             var backend = new LMStudioBackend("http://localhost:1234", "test-model");
@@ -50,9 +64,10 @@ namespace creator_ui.tests.EditMode
         [Test]
         public void LLMClient_Constructs()
         {
+            var barros = new BarrosBackend();
             var lm = new LMStudioBackend("http://localhost:1234", "m");
             var oa = new OpenAIBackend("sk-test");
-            var client = new LLMClient(lm, oa);
+            var client = new LLMClient(barros, lm, oa);
             Assert.IsNotNull(client);
         }
     }

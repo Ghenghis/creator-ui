@@ -53,6 +53,7 @@ namespace creator_ui.tests.EditMode
     {
         private readonly string _response;
         public StubLLMClient(string response) : base(
+            new BarrosBackend("http://localhost:1"),
             new LMStudioBackend("http://localhost:1", "stub"),
             new OpenAIBackend("stub-key"))
         {

@@ -1,0 +1,20 @@
+{
+  "barros_backend": {
+    "base_url": "http://127.0.0.1:48173",
+    "timeout_seconds": 30
+  },
+  "lmstudio": {
+    "base_url": "http://127.0.0.1:1234",
+    "model": "local-model",
+    "timeout_seconds": 5
+  },
+  "openai": {
+    "api_key_env": "OPENAI_API_KEY",
+    "model": "gpt-4o-mini",
+    "timeout_seconds": 30
+  },
+  "ui": {
+    "default_chat_mode": "chef-voice",
+    "voice_enabled": false
+  }
+}
