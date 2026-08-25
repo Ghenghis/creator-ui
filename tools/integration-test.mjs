@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // End-to-end integration test: creator-ui catalog -> Barros sidecar -> LMStudio -> PC3 recipe -> texture -> Slice 1 verifier
-// Usage: node tools/integration-test.mjs [--skip-verifier] [--skip-texture]
+// Usage: node tools/integration-test.mjs [--skip-verifier] [--skip-texture] [--texture=comfyui|pil]
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
 import { execSync } from 'child_process';
@@ -14,6 +14,8 @@ const verifierDir = process.env.VERIFIER_DIR || 'S:/Unity_Games/PC3 - Pizza Crea
 const gameDir = process.env.GAME_DIR || 'S:/Unity_Games/PC3 - Pizza Creator/_decompiled/Assembly-CSharp';
 const skipVerifier = process.argv.includes('--skip-verifier');
 const skipTexture = process.argv.includes('--skip-texture');
+const textureArg = process.argv.find(a => a.startsWith('--texture='));
+const textureMode = textureArg ? textureArg.split('=')[1] : 'comfyui';
 
 mkdirSync(outDir, { recursive: true });
 
@@ -50,8 +52,10 @@ async function composeRecipe(prompt, heat = 'Medium') {
 }
 
 function renderTexture(pizzaPath) {
+  const script = textureMode === 'comfyui' ? 'render-texture-comfyui.mjs' : 'render-texture.mjs';
+  const timeoutMs = textureMode === 'comfyui' ? 180000 : 30000;
   try {
-    execSync(`node "${join(projectRoot, 'tools/render-texture.mjs')}" "${pizzaPath}"`, { stdio: 'pipe', timeout: 30000 });
+    execSync(`node "${join(projectRoot, 'tools/' + script)}" "${pizzaPath}"`, { stdio: 'pipe', timeout: timeoutMs });
     return true;
   } catch (e) {
     return false;
@@ -128,10 +132,11 @@ try {
     writeFileSync(finalPath, JSON.stringify(pc3, null, 2));
     log(`   Wrote: ${finalPath}`);
 
-    // Render texture (PIL placeholder)
+    // Render texture (ComfyUI real diffusion or PIL placeholder)
     if (!skipTexture) {
       const texOk = renderTexture(finalPath);
-      log(`   Texture: ${texOk ? 'embedded (256x256 PNG)' : 'FAILED'}`);
+      const modeLabel = textureMode === 'comfyui' ? 'ComfyUI SD-Turbo' : 'PIL placeholder';
+      log(`   Texture: ${texOk ? `embedded via ${modeLabel}` : 'FAILED'}`);
     }
 
     // Run Slice 1 verifier
