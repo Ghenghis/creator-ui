@@ -1,0 +1,51 @@
+@import url("../Shared/Theme.uss");
+@import url("../Shared/Buttons.uss");
+@import url("../Shared/Cards.uss");
+
+.gallery-panel {
+    width: 380px;
+    background-color: var(--color-panel);
+    padding: var(--spacing-md);
+    flex-direction: column;
+}
+
+.gallery-scroll {
+    flex-grow: 1;
+    max-height: 600px;
+}
+
+.gallery-grid {
+    flex-direction: column;
+}
+
+.gallery-card {
+    flex-direction: row;
+    background-color: #ffffff;
+    border-radius: var(--radius-md);
+    border-width: 1px;
+    border-color: var(--color-border);
+    padding: var(--spacing-sm);
+    margin: var(--spacing-xs) 0;
+}
+
+.gallery-card__thumb {
+    width: 64px;
+    height: 64px;
+    background-color: var(--color-bg);
+    border-radius: var(--radius-sm);
+}
+
+.gallery-card__body {
+    flex-grow: 1;
+    margin-left: var(--spacing-sm);
+}
+
+.gallery-card__name {
+    -unity-font-style: bold;
+    font-size: var(--font-size-body);
+}
+
+.gallery-card__meta {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+}

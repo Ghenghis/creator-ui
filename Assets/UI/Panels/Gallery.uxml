@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="gallery-panel" class="gallery-panel">
+        <ui:VisualElement class="panel-header">
+            <ui:Label text="Barro's Pizza Gallery" class="panel-header__title" />
+            <ui:Button name="gallery__close" class="panel-header__close" text="x" />
+        </ui:VisualElement>
+
+        <ui:ScrollView name="gallery-scroll" class="gallery-scroll">
+            <ui:VisualElement name="gallery-grid" class="gallery-grid" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>
