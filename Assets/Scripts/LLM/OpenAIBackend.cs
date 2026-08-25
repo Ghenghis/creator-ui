@@ -15,7 +15,7 @@ namespace creator_ui.LLM
         {
             _apiKey = apiKey;
             _model = model;
-            _http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
+            _http = new HttpClient { Timeout = TimeSpan.FromSeconds(60) };
         }
 
         public async Task<string> CompleteAsync(string systemPrompt, string userPrompt)
@@ -29,7 +29,7 @@ namespace creator_ui.LLM
             };
             var payload = "{\"model\":\"" + _model + "\",\"messages\":" +
                           LLMJson.ArrayOf(messages) +
-                          ",\"temperature\":0.7,\"response_format\":{\"type\":\"json_object\"}}";
+                          ",\"temperature\":0.3,\"response_format\":{\"type\":\"json_object\"}}";
             var content = new StringContent(payload, System.Text.Encoding.UTF8, "application/json");
             var resp = await _http.PostAsync("https://api.openai.com/v1/chat/completions", content);
             resp.EnsureSuccessStatusCode();
