@@ -122,6 +122,10 @@ namespace creator_ui.Chat
             var openai = new OpenAIBackend(System.Environment.GetEnvironmentVariable(openaiKeyEnv) ?? "");
             var client = new LLMClient(barros, lmstudio, openai);
 
+            // Serialize catalog for Barros /compose (used by RecipeComposer + CrewPanel)
+            var catalog = Recipe.IngredientCatalog.Load();
+            var catalogJsonArray = RecipeComposer.SerializeCatalogForBarrosPublic(catalog);
+
             // Wire NameDialog
             var nameDialogComp = gameObject.AddComponent<NameDialog>();
             nameDialogComp.document = doc;
@@ -142,6 +146,8 @@ namespace creator_ui.Chat
             var crew = gameObject.AddComponent<CrewPanel>();
             crew.llmClient = client;
             crew.nameDialog = nameDialogComp;
+            crew.barros = barros;
+            crew.catalogJsonArray = catalogJsonArray;
             var lab = gameObject.AddComponent<LabPanel>();
             lab.llmClient = client;
             lab.nameDialog = nameDialogComp;

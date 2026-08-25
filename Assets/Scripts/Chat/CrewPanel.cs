@@ -7,28 +7,35 @@ using UnityEngine.UIElements;
 
 namespace creator_ui.Chat
 {
+    // Crew panel: 4-persona design crew (Flavor Chef, Cost Manager, Customer Scout, Creative Director).
+    // Each persona contributes via Barros /chat. Then Lead synthesizes final recipe via /compose.
     public class CrewPanel : MonoBehaviour
     {
         public LLMClient llmClient;
+        public BarrosBackend barros;
         public NameDialog nameDialog;
+        public string[] catalogJsonArray;
 
         private RecipeData _currentRecipe;
         private readonly List<(string agent, string message, bool warning)> _discussion = new();
 
-        private const string FLAVOR_CHEF_SYS = "You are Flavor Chef. Suggest bold, craveable pizza combinations. One short sentence.";
-        private const string COST_MANAGER_SYS = "You are Cost Manager. Flag the cost concern. One short sentence.";
-        private const string CUSTOMER_SCOUT_SYS = "You are Customer Scout. Note a trend. One short sentence.";
-        private const string CREATIVE_DIRECTOR_SYS = "You are Creative Director. Suggest a name and signature. One short sentence.";
+        private const string FLAVOR_SYS = "You are Flavor Chef for Barro's Pizza. Suggest ONE bold, craveable ingredient combination. Reply in 1 short sentence.";
+        private const string COST_SYS = "You are Cost Manager. Flag ONE cost concern about a proposed pizza. Reply in 1 short sentence.";
+        private const string CUSTOMER_SYS = "You are Customer Scout. Note ONE current trend relevant to the pizza. Reply in 1 short sentence.";
+        private const string CREATIVE_SYS = "You are Creative Director. Suggest a memorable pizza NAME and one signature element. Reply in 1 short sentence.";
+        private const string LEAD_SYS = "You are Crew Lead for Barro's Pizza. Combine the 4 agent ideas into one final pizza recipe. Return PC3 PizzaModel-shaped JSON with: {name, dough:{size,shape}, ingredients:[{id, amount_g, size}]}. Sizes: Small/Medium/Large. Ingredient IDs MUST be from the catalog.";
 
         public async Task ComposeAsync(string theme)
         {
             _discussion.Clear();
+
+            // Step 1: Gather 4 perspectives in parallel via Barros /chat
             var tasks = new List<Task<string>>
             {
-                llmClient.CompleteAsync(FLAVOR_CHEF_SYS, $"Theme: {theme}. Suggest 1 bold ingredient."),
-                llmClient.CompleteAsync(COST_MANAGER_SYS, $"Theme: {theme}. Flag cost concern."),
-                llmClient.CompleteAsync(CUSTOMER_SCOUT_SYS, $"Theme: {theme}. Note trend."),
-                llmClient.CompleteAsync(CREATIVE_DIRECTOR_SYS, $"Theme: {theme}. Suggest name + signature.")
+                barros.ChatAsync(FLAVOR_SYS, $"Theme: {theme}", null),
+                barros.ChatAsync(COST_SYS, $"Theme: {theme}", null),
+                barros.ChatAsync(CUSTOMER_SYS, $"Theme: {theme}", null),
+                barros.ChatAsync(CREATIVE_SYS, $"Theme: {theme}", null)
             };
             var results = await Task.WhenAll(tasks);
             _discussion.Add(("Flavor Chef", results[0], false));
@@ -37,10 +44,37 @@ namespace creator_ui.Chat
             _discussion.Add(("Creative Director", results[3], false));
             UpdateDiscussionLog();
 
-            var composer = new RecipeComposer(llmClient);
-            _currentRecipe = await composer.ComposeAsync(
-                "Combine the 4 agent suggestions into one Barro's Pizza JSON. Return PizzaModel-shaped JSON.",
-                $"Theme: {theme}. Ideas: {string.Join(" | ", results)}");
+            // Step 2: Lead synthesizes final recipe via Barros /compose (with catalog)
+            var leadPrompt = $"Theme: {theme}\nFlavor Chef: {results[0]}\nCost Manager: {results[1]}\nCustomer Scout: {results[2]}\nCreative Director: {results[3]}";
+            string respJson;
+            try
+            {
+                respJson = await barros.ComposeWithCatalogAsync(leadPrompt, catalogJsonArray ?? new string[0], "Medium");
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning($"[CrewPanel] Barros /compose failed: {ex.Message}, falling back to LLMClient");
+                respJson = await llmClient.CompleteAsync(LEAD_SYS, leadPrompt);
+            }
+
+            // Step 3: Parse Barros response, convert to RecipeData
+            try
+            {
+                var response = JsonUtility.FromJson<BarrosComposeResponse>(LLMJson.StripMarkdownCodeBlock(respJson));
+                if (response != null && response.recipes != null && response.recipes.Length > 0)
+                {
+                    _currentRecipe = BarrosRecipeAdapter.ToRecipeData(response.recipes[0]);
+                    UpdateConsensus(_currentRecipe);
+                    return;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning($"[CrewPanel] Barros parse failed: {ex.Message}, trying LLMClient recipe shape");
+            }
+            // Fallback: LLM direct
+            var composer = new RecipeComposer(llmClient, barros);
+            _currentRecipe = await composer.ComposeAsync(LEAD_SYS, leadPrompt);
             UpdateConsensus(_currentRecipe);
         }
 

@@ -101,5 +101,11 @@ namespace creator_ui.Recipe
             if (s == null) return "";
             return s.Replace("\\", "\\\\").Replace("\"", "\\\"");
         }
+
+        // Public version for bootstrap to pre-compute and share with multiple panels
+        public static string[] SerializeCatalogForBarrosPublic(CatalogData catalog)
+        {
+            return SerializeCatalogForBarros(catalog);
+        }
     }
 }
