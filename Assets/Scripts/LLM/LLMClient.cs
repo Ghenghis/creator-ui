@@ -26,30 +26,23 @@ namespace creator_ui.LLM
 
         public async Task<string> CompleteAsync(string systemPrompt, string userPrompt)
         {
-            // Preferred path: Barros sidecar (handles orchestration + provider routing)
+            // Note: Barros sidecar calls live in RecipeComposer (needs catalog).
+            // LLMClient is now the LLM-direct fallback chain (LMStudio -> OpenAI).
             try
             {
-                return await _barros.ComposeAsync(systemPrompt, userPrompt);
+                return await _lmstudio.CompleteAsync(systemPrompt, userPrompt);
             }
-            catch (Exception barrosEx)
+            catch (Exception lmEx)
             {
-                UnityEngine.Debug.LogWarning($"[LLMClient] Barros sidecar failed: {barrosEx.Message}. Falling back to LMStudio.");
+                UnityEngine.Debug.LogWarning($"[LLMClient] LMStudio failed: {lmEx.Message}. Falling back to OpenAI.");
                 try
                 {
-                    return await _lmstudio.CompleteAsync(systemPrompt, userPrompt);
+                    return await _openai.CompleteAsync(systemPrompt, userPrompt);
                 }
-                catch (Exception lmEx)
+                catch (Exception openaiEx)
                 {
-                    UnityEngine.Debug.LogWarning($"[LLMClient] LMStudio failed: {lmEx.Message}. Falling back to OpenAI.");
-                    try
-                    {
-                        return await _openai.CompleteAsync(systemPrompt, userPrompt);
-                    }
-                    catch (Exception openaiEx)
-                    {
-                        throw new Exception(
-                            $"No LLM backend available. Barros: {barrosEx.Message}. LMStudio: {lmEx.Message}. OpenAI: {openaiEx.Message}");
-                    }
+                    throw new Exception(
+                        $"No LLM backend available. LMStudio: {lmEx.Message}. OpenAI: {openaiEx.Message}");
                 }
             }
         }

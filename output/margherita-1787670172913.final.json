@@ -1,0 +1,43 @@
+{
+  "ID": "integration-1787670172913",
+  "Ingredients": [
+    {
+      "IngredientID": "Mozzarella",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 1
+    },
+    {
+      "IngredientID": "Tomato",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 2
+    }
+  ],
+  "DoughPositions": [
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  ],
+  "ProfitFactor": 0.7,
+  "Owner": null,
+  "Texture": ""
+}

@@ -1,0 +1,2093 @@
+{
+  "version": 1,
+  "ingredients": [
+    {
+      "id": "Mozzarella",
+      "name": "Mozzarella",
+      "type_id": "Cheese",
+      "base_price_per_100g": 0.96,
+      "craziness": 0.0,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 125.0,
+          "cost": 1.2
+        },
+        {
+          "size": "Medium",
+          "grams": 40.0,
+          "cost": 0.384
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.0192
+        }
+      ]
+    },
+    {
+      "id": "Ricotta",
+      "name": "Ricotta",
+      "type_id": "Cheese",
+      "base_price_per_100g": 2.5,
+      "craziness": 0.3,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 220.0,
+          "cost": 5.5
+        },
+        {
+          "size": "Medium",
+          "grams": 55.0,
+          "cost": 1.375
+        },
+        {
+          "size": "Small",
+          "grams": 8.0,
+          "cost": 0.2
+        }
+      ]
+    },
+    {
+      "id": "BelPaese",
+      "name": "BelPaese",
+      "type_id": "Cheese",
+      "base_price_per_100g": 3.0,
+      "craziness": 0.5,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 300.0,
+          "cost": 9.0
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.6
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.06
+        }
+      ]
+    },
+    {
+      "id": "Gorgonzola",
+      "name": "Gorgonzola",
+      "type_id": "Cheese",
+      "base_price_per_100g": 2.5,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 150.0,
+          "cost": 3.75
+        },
+        {
+          "size": "Medium",
+          "grams": 40.0,
+          "cost": 1.0
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.05
+        }
+      ]
+    },
+    {
+      "id": "Parmesan",
+      "name": "Parmesan",
+      "type_id": "Cheese",
+      "base_price_per_100g": 2.0,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 180.0,
+          "cost": 3.6
+        },
+        {
+          "size": "Medium",
+          "grams": 30.0,
+          "cost": 0.6
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.1
+        }
+      ]
+    },
+    {
+      "id": "Edam",
+      "name": "Edam",
+      "type_id": "Cheese",
+      "base_price_per_100g": 1.2,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 300.0,
+          "cost": 3.6
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.24
+        },
+        {
+          "size": "Small",
+          "grams": 4.0,
+          "cost": 0.048
+        }
+      ]
+    },
+    {
+      "id": "Gouda",
+      "name": "Gouda",
+      "type_id": "Cheese",
+      "base_price_per_100g": 1.2,
+      "craziness": 0.0,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 240.0,
+          "cost": 2.88
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.24
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.024
+        }
+      ]
+    },
+    {
+      "id": "Feta",
+      "name": "Feta",
+      "type_id": "Cheese",
+      "base_price_per_100g": 1.0,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 150.0,
+          "cost": 1.5
+        },
+        {
+          "size": "Medium",
+          "grams": 30.0,
+          "cost": 0.3
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.1
+        }
+      ]
+    },
+    {
+      "id": "RacletteCheese",
+      "name": "RacletteCheese",
+      "type_id": "Cheese",
+      "base_price_per_100g": 1.2,
+      "craziness": 0.3,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 320.0,
+          "cost": 3.84
+        },
+        {
+          "size": "Medium",
+          "grams": 30.0,
+          "cost": 0.36
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.06
+        }
+      ]
+    },
+    {
+      "id": "VeganCheese",
+      "name": "VeganCheese",
+      "type_id": "Cheese",
+      "base_price_per_100g": 1.4,
+      "craziness": 0.5,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 140.0,
+          "cost": 1.96
+        },
+        {
+          "size": "Medium",
+          "grams": 40.0,
+          "cost": 0.56
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.07
+        }
+      ]
+    },
+    {
+      "id": "Tuna",
+      "name": "Tuna",
+      "type_id": "Fish",
+      "base_price_per_100g": 1.66,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 200.0,
+          "cost": 3.32
+        },
+        {
+          "size": "Medium",
+          "grams": 50.0,
+          "cost": 0.83
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.083
+        }
+      ]
+    },
+    {
+      "id": "Squid",
+      "name": "Squid",
+      "type_id": "Fish",
+      "base_price_per_100g": 1.6,
+      "craziness": 0.4,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 140.0,
+          "cost": 2.24
+        },
+        {
+          "size": "Medium",
+          "grams": 80.0,
+          "cost": 1.28
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.08
+        }
+      ]
+    },
+    {
+      "id": "Anchovy",
+      "name": "Anchovy",
+      "type_id": "Fish",
+      "base_price_per_100g": 5.0,
+      "craziness": 0.3,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 40.0,
+          "cost": 2.0
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 1.0
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Salmon",
+      "name": "Salmon",
+      "type_id": "Fish",
+      "base_price_per_100g": 4.0,
+      "craziness": 0.4,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 1000.0,
+          "cost": 40.0
+        },
+        {
+          "size": "Medium",
+          "grams": 300.0,
+          "cost": 12.0
+        },
+        {
+          "size": "Small",
+          "grams": 25.0,
+          "cost": 1.0
+        }
+      ]
+    },
+    {
+      "id": "Crab",
+      "name": "Crab",
+      "type_id": "Fish",
+      "base_price_per_100g": 4.4,
+      "craziness": 0.35,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 600.0,
+          "cost": 26.4
+        },
+        {
+          "size": "Medium",
+          "grams": 80.0,
+          "cost": 3.52
+        },
+        {
+          "size": "Small",
+          "grams": 20.0,
+          "cost": 0.88
+        }
+      ]
+    },
+    {
+      "id": "Shrimp",
+      "name": "Shrimp",
+      "type_id": "Fish",
+      "base_price_per_100g": 1.4,
+      "craziness": 0.3,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 50.0,
+          "cost": 0.7
+        },
+        {
+          "size": "Medium",
+          "grams": 25.0,
+          "cost": 0.35
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.14
+        }
+      ]
+    },
+    {
+      "id": "Lobster",
+      "name": "Lobster",
+      "type_id": "Fish",
+      "base_price_per_100g": 4.5,
+      "craziness": 0.5,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 500.0,
+          "cost": 22.5
+        },
+        {
+          "size": "Medium",
+          "grams": 220.0,
+          "cost": 9.9
+        },
+        {
+          "size": "Small",
+          "grams": 15.0,
+          "cost": 0.675
+        }
+      ]
+    },
+    {
+      "id": "Caviar",
+      "name": "Caviar",
+      "type_id": "Fish",
+      "base_price_per_100g": 8.5,
+      "craziness": 0.5,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 50.0,
+          "cost": 4.25
+        },
+        {
+          "size": "Medium",
+          "grams": 15.0,
+          "cost": 1.275
+        },
+        {
+          "size": "Small",
+          "grams": 3.0,
+          "cost": 0.255
+        }
+      ]
+    },
+    {
+      "id": "BlueMussel",
+      "name": "BlueMussel",
+      "type_id": "Fish",
+      "base_price_per_100g": 2.2,
+      "craziness": 0.6,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 30.0,
+          "cost": 0.66
+        },
+        {
+          "size": "Medium",
+          "grams": 15.0,
+          "cost": 0.33
+        },
+        {
+          "size": "Small",
+          "grams": 8.0,
+          "cost": 0.176
+        }
+      ]
+    },
+    {
+      "id": "Cockle",
+      "name": "Cockle",
+      "type_id": "Fish",
+      "base_price_per_100g": 2.8,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 35.0,
+          "cost": 0.98
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.56
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.28
+        }
+      ]
+    },
+    {
+      "id": "Flounder",
+      "name": "Flounder",
+      "type_id": "Fish",
+      "base_price_per_100g": 2.5,
+      "craziness": 0.3,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 900.0,
+          "cost": 22.5
+        },
+        {
+          "size": "Medium",
+          "grams": 200.0,
+          "cost": 5.0
+        },
+        {
+          "size": "Small",
+          "grams": 25.0,
+          "cost": 0.625
+        }
+      ]
+    },
+    {
+      "id": "Apples",
+      "name": "Apples",
+      "type_id": "Fruit",
+      "base_price_per_100g": 0.4,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 200.0,
+          "cost": 0.8
+        },
+        {
+          "size": "Medium",
+          "grams": 50.0,
+          "cost": 0.2
+        },
+        {
+          "size": "Small",
+          "grams": 20.0,
+          "cost": 0.08
+        }
+      ]
+    },
+    {
+      "id": "Pear",
+      "name": "Pear",
+      "type_id": "Fruit",
+      "base_price_per_100g": 0.3,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 200.0,
+          "cost": 0.6
+        },
+        {
+          "size": "Medium",
+          "grams": 100.0,
+          "cost": 0.3
+        },
+        {
+          "size": "Small",
+          "grams": 30.0,
+          "cost": 0.09
+        }
+      ]
+    },
+    {
+      "id": "Peach",
+      "name": "Peach",
+      "type_id": "Fruit",
+      "base_price_per_100g": 1.0,
+      "craziness": 0.6,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 150.0,
+          "cost": 1.5
+        },
+        {
+          "size": "Medium",
+          "grams": 75.0,
+          "cost": 0.75
+        },
+        {
+          "size": "Small",
+          "grams": 20.0,
+          "cost": 0.2
+        }
+      ]
+    },
+    {
+      "id": "Banana",
+      "name": "Banana",
+      "type_id": "Fruit",
+      "base_price_per_100g": 0.4,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 180.0,
+          "cost": 0.72
+        },
+        {
+          "size": "Medium",
+          "grams": 80.0,
+          "cost": 0.32
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.02
+        }
+      ]
+    },
+    {
+      "id": "Lemon",
+      "name": "Lemon",
+      "type_id": "Fruit",
+      "base_price_per_100g": 0.4,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 120.0,
+          "cost": 0.48
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.08
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.04
+        }
+      ]
+    },
+    {
+      "id": "Pineapple",
+      "name": "Pineapple",
+      "type_id": "Fruit",
+      "base_price_per_100g": 0.4,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 1000.0,
+          "cost": 4.0
+        },
+        {
+          "size": "Medium",
+          "grams": 100.0,
+          "cost": 0.4
+        },
+        {
+          "size": "Small",
+          "grams": 20.0,
+          "cost": 0.08
+        }
+      ]
+    },
+    {
+      "id": "Kiwi",
+      "name": "Kiwi",
+      "type_id": "Fruit",
+      "base_price_per_100g": 0.5,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 80.0,
+          "cost": 0.4
+        },
+        {
+          "size": "Medium",
+          "grams": 10.0,
+          "cost": 0.05
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.025
+        }
+      ]
+    },
+    {
+      "id": "Strawberry",
+      "name": "Strawberry",
+      "type_id": "Fruit",
+      "base_price_per_100g": 0.5,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 30.0,
+          "cost": 0.15
+        },
+        {
+          "size": "Medium",
+          "grams": 15.0,
+          "cost": 0.075
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.025
+        }
+      ]
+    },
+    {
+      "id": "Rasberry",
+      "name": "Rasberry",
+      "type_id": "Fruit",
+      "base_price_per_100g": 1.4,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 10.0,
+          "cost": 0.14
+        },
+        {
+          "size": "Medium",
+          "grams": 5.0,
+          "cost": 0.07
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.028
+        }
+      ]
+    },
+    {
+      "id": "Starfruit",
+      "name": "Starfruit",
+      "type_id": "Fruit",
+      "base_price_per_100g": 1.8,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 150.0,
+          "cost": 2.7
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.36
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.09
+        }
+      ]
+    },
+    {
+      "id": "Fig",
+      "name": "Fig",
+      "type_id": "Fruit",
+      "base_price_per_100g": 1.0,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 40.0,
+          "cost": 0.4
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.2
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.1
+        }
+      ]
+    },
+    {
+      "id": "Grapes",
+      "name": "Grapes",
+      "type_id": "Fruit",
+      "base_price_per_100g": 0.6,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 300.0,
+          "cost": 1.8
+        },
+        {
+          "size": "Medium",
+          "grams": 150.0,
+          "cost": 0.9
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.06
+        }
+      ]
+    },
+    {
+      "id": "Avocado",
+      "name": "Avocado",
+      "type_id": "Fruit",
+      "base_price_per_100g": 0.52,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 180.0,
+          "cost": 0.936
+        },
+        {
+          "size": "Medium",
+          "grams": 80.0,
+          "cost": 0.416
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.052
+        }
+      ]
+    },
+    {
+      "id": "Dates",
+      "name": "Dates",
+      "type_id": "Fruit",
+      "base_price_per_100g": 1.2,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 20.0,
+          "cost": 0.24
+        },
+        {
+          "size": "Medium",
+          "grams": 10.0,
+          "cost": 0.12
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.06
+        }
+      ]
+    },
+    {
+      "id": "Salami",
+      "name": "Salami",
+      "type_id": "Meat",
+      "base_price_per_100g": 2.33,
+      "craziness": 0.0,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 500.0,
+          "cost": 11.65
+        },
+        {
+          "size": "Medium",
+          "grams": 15.0,
+          "cost": 0.3495
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.1165
+        }
+      ]
+    },
+    {
+      "id": "Pepperoni",
+      "name": "Pepperoni",
+      "type_id": "Meat",
+      "base_price_per_100g": 2.5,
+      "craziness": 0.0,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 240.0,
+          "cost": 6.0
+        },
+        {
+          "size": "Medium",
+          "grams": 13.0,
+          "cost": 0.325
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.125
+        }
+      ]
+    },
+    {
+      "id": "Chorizo",
+      "name": "Chorizo",
+      "type_id": "Meat",
+      "base_price_per_100g": 3.0,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 100.0,
+          "cost": 3.0
+        },
+        {
+          "size": "Medium",
+          "grams": 40.0,
+          "cost": 1.2
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.3
+        }
+      ]
+    },
+    {
+      "id": "Bacon",
+      "name": "Bacon",
+      "type_id": "Meat",
+      "base_price_per_100g": 1.0,
+      "craziness": 0.05,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 250.0,
+          "cost": 2.5
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.2
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.05
+        }
+      ]
+    },
+    {
+      "id": "Ham",
+      "name": "Ham",
+      "type_id": "Meat",
+      "base_price_per_100g": 1.2,
+      "craziness": 0.0,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 1200.0,
+          "cost": 14.4
+        },
+        {
+          "size": "Medium",
+          "grams": 30.0,
+          "cost": 0.36
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.06
+        }
+      ]
+    },
+    {
+      "id": "Beef",
+      "name": "Beef",
+      "type_id": "Meat",
+      "base_price_per_100g": 3.0,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 380.0,
+          "cost": 11.4
+        },
+        {
+          "size": "Medium",
+          "grams": 120.0,
+          "cost": 3.6
+        },
+        {
+          "size": "Small",
+          "grams": 40.0,
+          "cost": 1.2
+        }
+      ]
+    },
+    {
+      "id": "Pork",
+      "name": "Pork",
+      "type_id": "Meat",
+      "base_price_per_100g": 2.0,
+      "craziness": 0.0,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 340.0,
+          "cost": 6.8
+        },
+        {
+          "size": "Medium",
+          "grams": 108.0,
+          "cost": 2.16
+        },
+        {
+          "size": "Small",
+          "grams": 30.0,
+          "cost": 0.6
+        }
+      ]
+    },
+    {
+      "id": "Chicken",
+      "name": "Chicken",
+      "type_id": "Meat",
+      "base_price_per_100g": 1.5,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 800.0,
+          "cost": 12.0
+        },
+        {
+          "size": "Medium",
+          "grams": 200.0,
+          "cost": 3.0
+        },
+        {
+          "size": "Small",
+          "grams": 25.0,
+          "cost": 0.375
+        }
+      ]
+    },
+    {
+      "id": "Minced",
+      "name": "Minced",
+      "type_id": "Meat",
+      "base_price_per_100g": 1.8,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 150.0,
+          "cost": 2.7
+        },
+        {
+          "size": "Medium",
+          "grams": 50.0,
+          "cost": 0.9
+        },
+        {
+          "size": "Small",
+          "grams": 20.0,
+          "cost": 0.36
+        }
+      ]
+    },
+    {
+      "id": "Sausage",
+      "name": "Sausage",
+      "type_id": "Meat",
+      "base_price_per_100g": 0.75,
+      "craziness": 0.3,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 80.0,
+          "cost": 0.6
+        },
+        {
+          "size": "Medium",
+          "grams": 40.0,
+          "cost": 0.3
+        },
+        {
+          "size": "Small",
+          "grams": 15.0,
+          "cost": 0.1125
+        }
+      ]
+    },
+    {
+      "id": "Kangaroo",
+      "name": "Kangaroo",
+      "type_id": "Meat",
+      "base_price_per_100g": 3.75,
+      "craziness": 0.7,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 380.0,
+          "cost": 14.25
+        },
+        {
+          "size": "Medium",
+          "grams": 100.0,
+          "cost": 3.75
+        },
+        {
+          "size": "Small",
+          "grams": 30.0,
+          "cost": 1.125
+        }
+      ]
+    },
+    {
+      "id": "Snake",
+      "name": "Snake",
+      "type_id": "Meat",
+      "base_price_per_100g": 2.0,
+      "craziness": 0.8,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 1000.0,
+          "cost": 20.0
+        },
+        {
+          "size": "Medium",
+          "grams": 100.0,
+          "cost": 2.0
+        },
+        {
+          "size": "Small",
+          "grams": 50.0,
+          "cost": 1.0
+        }
+      ]
+    },
+    {
+      "id": "Ants",
+      "name": "Ants",
+      "type_id": "Meat",
+      "base_price_per_100g": 0.5,
+      "craziness": 0.9,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 30.0,
+          "cost": 0.15
+        },
+        {
+          "size": "Medium",
+          "grams": 10.0,
+          "cost": 0.05
+        },
+        {
+          "size": "Small",
+          "grams": 3.0,
+          "cost": 0.015
+        }
+      ]
+    },
+    {
+      "id": "Grasshopper",
+      "name": "Grasshopper",
+      "type_id": "Meat",
+      "base_price_per_100g": 0.7,
+      "craziness": 0.95,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 12.0,
+          "cost": 0.084
+        },
+        {
+          "size": "Medium",
+          "grams": 8.0,
+          "cost": 0.056
+        },
+        {
+          "size": "Small",
+          "grams": 6.0,
+          "cost": 0.042
+        }
+      ]
+    },
+    {
+      "id": "Maggots",
+      "name": "Maggots",
+      "type_id": "Meat",
+      "base_price_per_100g": 0.6,
+      "craziness": 0.95,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 25.0,
+          "cost": 0.15
+        },
+        {
+          "size": "Medium",
+          "grams": 5.0,
+          "cost": 0.03
+        },
+        {
+          "size": "Small",
+          "grams": 1.0,
+          "cost": 0.006
+        }
+      ]
+    },
+    {
+      "id": "Frog",
+      "name": "Frog",
+      "type_id": "Meat",
+      "base_price_per_100g": 3.0,
+      "craziness": 0.8,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 120.0,
+          "cost": 3.6
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.6
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.3
+        }
+      ]
+    },
+    {
+      "id": "Earthworm",
+      "name": "Earthworm",
+      "type_id": "Meat",
+      "base_price_per_100g": 2.5,
+      "craziness": 0.95,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 30.0,
+          "cost": 0.75
+        },
+        {
+          "size": "Medium",
+          "grams": 15.0,
+          "cost": 0.375
+        },
+        {
+          "size": "Small",
+          "grams": 7.0,
+          "cost": 0.175
+        }
+      ]
+    },
+    {
+      "id": "Egg",
+      "name": "Egg",
+      "type_id": "Meat",
+      "base_price_per_100g": 0.9,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 60.0,
+          "cost": 0.54
+        },
+        {
+          "size": "Medium",
+          "grams": 30.0,
+          "cost": 0.27
+        },
+        {
+          "size": "Small",
+          "grams": 15.0,
+          "cost": 0.135
+        }
+      ]
+    },
+    {
+      "id": "VeganSausage",
+      "name": "VeganSausage",
+      "type_id": "Meat",
+      "base_price_per_100g": 1.5,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 90.0,
+          "cost": 1.35
+        },
+        {
+          "size": "Medium",
+          "grams": 30.0,
+          "cost": 0.45
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.15
+        }
+      ]
+    },
+    {
+      "id": "Tofu",
+      "name": "Tofu",
+      "type_id": "Meat",
+      "base_price_per_100g": 1.5,
+      "craziness": 0.3,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 80.0,
+          "cost": 1.2
+        },
+        {
+          "size": "Medium",
+          "grams": 40.0,
+          "cost": 0.6
+        },
+        {
+          "size": "Small",
+          "grams": 15.0,
+          "cost": 0.225
+        }
+      ]
+    },
+    {
+      "id": "Parsley",
+      "name": "Parsley",
+      "type_id": "Spice",
+      "base_price_per_100g": 6.0,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 4.0,
+          "cost": 0.24
+        },
+        {
+          "size": "Medium",
+          "grams": 3.0,
+          "cost": 0.18
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.12
+        }
+      ]
+    },
+    {
+      "id": "Ginger",
+      "name": "Ginger",
+      "type_id": "Spice",
+      "base_price_per_100g": 1.2,
+      "craziness": 0.5,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 60.0,
+          "cost": 0.72
+        },
+        {
+          "size": "Medium",
+          "grams": 10.0,
+          "cost": 0.12
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.06
+        }
+      ]
+    },
+    {
+      "id": "Oregano",
+      "name": "Oregano",
+      "type_id": "Spice",
+      "base_price_per_100g": 9.4,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 5.0,
+          "cost": 0.47
+        },
+        {
+          "size": "Medium",
+          "grams": 4.0,
+          "cost": 0.376
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.188
+        }
+      ]
+    },
+    {
+      "id": "Curry",
+      "name": "Curry",
+      "type_id": "Spice",
+      "base_price_per_100g": 2.83,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 6.0,
+          "cost": 0.1698
+        },
+        {
+          "size": "Medium",
+          "grams": 4.0,
+          "cost": 0.1132
+        },
+        {
+          "size": "Small",
+          "grams": 1.0,
+          "cost": 0.0283
+        }
+      ]
+    },
+    {
+      "id": "Garlic",
+      "name": "Garlic",
+      "type_id": "Spice",
+      "base_price_per_100g": 1.0,
+      "craziness": 0.05,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 50.0,
+          "cost": 0.5
+        },
+        {
+          "size": "Medium",
+          "grams": 10.0,
+          "cost": 0.1
+        },
+        {
+          "size": "Small",
+          "grams": 3.0,
+          "cost": 0.03
+        }
+      ]
+    },
+    {
+      "id": "Thyme",
+      "name": "Thyme",
+      "type_id": "Spice",
+      "base_price_per_100g": 8.0,
+      "craziness": 0.15,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 8.0,
+          "cost": 0.64
+        },
+        {
+          "size": "Medium",
+          "grams": 4.0,
+          "cost": 0.32
+        },
+        {
+          "size": "Small",
+          "grams": 1.0,
+          "cost": 0.08
+        }
+      ]
+    },
+    {
+      "id": "Chili",
+      "name": "Chili",
+      "type_id": "Spice",
+      "base_price_per_100g": 8.0,
+      "craziness": 0.15,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 12.0,
+          "cost": 0.96
+        },
+        {
+          "size": "Medium",
+          "grams": 8.0,
+          "cost": 0.64
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.16
+        }
+      ]
+    },
+    {
+      "id": "Rosemary",
+      "name": "Rosemary",
+      "type_id": "Spice",
+      "base_price_per_100g": 4.37,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 8.0,
+          "cost": 0.3496
+        },
+        {
+          "size": "Medium",
+          "grams": 3.0,
+          "cost": 0.1311
+        },
+        {
+          "size": "Small",
+          "grams": 1.0,
+          "cost": 0.0437
+        }
+      ]
+    },
+    {
+      "id": "Basil",
+      "name": "Basil",
+      "type_id": "Spice",
+      "base_price_per_100g": 3.12,
+      "craziness": 0.05,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 4.0,
+          "cost": 0.1248
+        },
+        {
+          "size": "Medium",
+          "grams": 2.0,
+          "cost": 0.0624
+        },
+        {
+          "size": "Small",
+          "grams": 1.0,
+          "cost": 0.0312
+        }
+      ]
+    },
+    {
+      "id": "Jalapeno",
+      "name": "Jalapeno",
+      "type_id": "Spice",
+      "base_price_per_100g": 12.0,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 40.0,
+          "cost": 4.8
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 2.4
+        },
+        {
+          "size": "Small",
+          "grams": 8.0,
+          "cost": 0.96
+        }
+      ]
+    },
+    {
+      "id": "Tomato",
+      "name": "Tomato",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.55,
+      "craziness": 0.0,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 100.0,
+          "cost": 0.55
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.11
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.0275
+        }
+      ]
+    },
+    {
+      "id": "Olive",
+      "name": "Olive",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 1.57,
+      "craziness": 0.3,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 11.0,
+          "cost": 0.1727
+        },
+        {
+          "size": "Medium",
+          "grams": 6.0,
+          "cost": 0.0942
+        },
+        {
+          "size": "Small",
+          "grams": 1.0,
+          "cost": 0.0157
+        }
+      ]
+    },
+    {
+      "id": "Pepper",
+      "name": "Pepper",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.8,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 220.0,
+          "cost": 1.76
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.16
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.04
+        }
+      ]
+    },
+    {
+      "id": "Asparagus",
+      "name": "Asparagus",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 1.39,
+      "craziness": 0.4,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 38.0,
+          "cost": 0.5282
+        },
+        {
+          "size": "Medium",
+          "grams": 30.0,
+          "cost": 0.417
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.0278
+        }
+      ]
+    },
+    {
+      "id": "Zucchini",
+      "name": "Zucchini",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.4,
+      "craziness": 0.4,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 300.0,
+          "cost": 1.2
+        },
+        {
+          "size": "Medium",
+          "grams": 30.0,
+          "cost": 0.12
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.008
+        }
+      ]
+    },
+    {
+      "id": "Carrots",
+      "name": "Carrots",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.3,
+      "craziness": 0.4,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 100.0,
+          "cost": 0.3
+        },
+        {
+          "size": "Medium",
+          "grams": 5.0,
+          "cost": 0.015
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.006
+        }
+      ]
+    },
+    {
+      "id": "Peasecod",
+      "name": "Peasecod",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.67,
+      "craziness": 0.5,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 20.0,
+          "cost": 0.134
+        },
+        {
+          "size": "Medium",
+          "grams": 10.0,
+          "cost": 0.067
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.0335
+        }
+      ]
+    },
+    {
+      "id": "Broccoli",
+      "name": "Broccoli",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.6,
+      "craziness": 0.4,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 530.0,
+          "cost": 3.18
+        },
+        {
+          "size": "Medium",
+          "grams": 50.0,
+          "cost": 0.3
+        },
+        {
+          "size": "Small",
+          "grams": 20.0,
+          "cost": 0.12
+        }
+      ]
+    },
+    {
+      "id": "Potato",
+      "name": "Potato",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.55,
+      "craziness": 0.3,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 100.0,
+          "cost": 0.55
+        },
+        {
+          "size": "Medium",
+          "grams": 50.0,
+          "cost": 0.275
+        },
+        {
+          "size": "Small",
+          "grams": 10.0,
+          "cost": 0.055
+        }
+      ]
+    },
+    {
+      "id": "Peperoni",
+      "name": "Peperoni",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 2.05,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 20.0,
+          "cost": 0.41
+        },
+        {
+          "size": "Medium",
+          "grams": 5.0,
+          "cost": 0.1025
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.041
+        }
+      ]
+    },
+    {
+      "id": "Spinach",
+      "name": "Spinach",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.4,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 30.0,
+          "cost": 0.12
+        },
+        {
+          "size": "Medium",
+          "grams": 8.0,
+          "cost": 0.032
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.008
+        }
+      ]
+    },
+    {
+      "id": "Rucola",
+      "name": "Rucola",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.15,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 30.0,
+          "cost": 0.045
+        },
+        {
+          "size": "Medium",
+          "grams": 10.0,
+          "cost": 0.015
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.0075
+        }
+      ]
+    },
+    {
+      "id": "Leek",
+      "name": "Leek",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.35,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 150.0,
+          "cost": 0.525
+        },
+        {
+          "size": "Medium",
+          "grams": 40.0,
+          "cost": 0.14
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.0175
+        }
+      ]
+    },
+    {
+      "id": "Onion",
+      "name": "Onion",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.4,
+      "craziness": 0.05,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 140.0,
+          "cost": 0.56
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.08
+        },
+        {
+          "size": "Small",
+          "grams": 7.0,
+          "cost": 0.028
+        }
+      ]
+    },
+    {
+      "id": "Corn",
+      "name": "Corn",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.2,
+      "craziness": 0.05,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 300.0,
+          "cost": 0.6
+        },
+        {
+          "size": "Medium",
+          "grams": 100.0,
+          "cost": 0.2
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.01
+        }
+      ]
+    },
+    {
+      "id": "Mushroom",
+      "name": "Mushroom",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.83,
+      "craziness": 0.1,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 12.0,
+          "cost": 0.0996
+        },
+        {
+          "size": "Medium",
+          "grams": 6.0,
+          "cost": 0.0498
+        },
+        {
+          "size": "Small",
+          "grams": 4.0,
+          "cost": 0.0332
+        }
+      ]
+    },
+    {
+      "id": "Porcino",
+      "name": "Porcino",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 3.5,
+      "craziness": 0.2,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 20.0,
+          "cost": 0.7
+        },
+        {
+          "size": "Medium",
+          "grams": 10.0,
+          "cost": 0.35
+        },
+        {
+          "size": "Small",
+          "grams": 5.0,
+          "cost": 0.175
+        }
+      ]
+    },
+    {
+      "id": "Radish",
+      "name": "Radish",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.5,
+      "craziness": 0.5,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 20.0,
+          "cost": 0.1
+        },
+        {
+          "size": "Medium",
+          "grams": 5.0,
+          "cost": 0.025
+        },
+        {
+          "size": "Small",
+          "grams": 2.0,
+          "cost": 0.01
+        }
+      ]
+    },
+    {
+      "id": "Kidneybeans",
+      "name": "Kidneybeans",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.2,
+      "craziness": 0.4,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 80.0,
+          "cost": 0.16
+        },
+        {
+          "size": "Medium",
+          "grams": 40.0,
+          "cost": 0.08
+        },
+        {
+          "size": "Small",
+          "grams": 8.0,
+          "cost": 0.016
+        }
+      ]
+    },
+    {
+      "id": "Chickpeas",
+      "name": "Chickpeas",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.2,
+      "craziness": 0.5,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 80.0,
+          "cost": 0.16
+        },
+        {
+          "size": "Medium",
+          "grams": 40.0,
+          "cost": 0.08
+        },
+        {
+          "size": "Small",
+          "grams": 8.0,
+          "cost": 0.016
+        }
+      ]
+    },
+    {
+      "id": "GreenBeans",
+      "name": "GreenBeans",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.5,
+      "craziness": 0.4,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 15.0,
+          "cost": 0.075
+        },
+        {
+          "size": "Medium",
+          "grams": 8.0,
+          "cost": 0.04
+        },
+        {
+          "size": "Small",
+          "grams": 4.0,
+          "cost": 0.02
+        }
+      ]
+    },
+    {
+      "id": "Seaweed",
+      "name": "Seaweed",
+      "type_id": "Vegetable",
+      "base_price_per_100g": 0.7,
+      "craziness": 0.8,
+      "sizes": [
+        {
+          "size": "Large",
+          "grams": 40.0,
+          "cost": 0.28
+        },
+        {
+          "size": "Medium",
+          "grams": 20.0,
+          "cost": 0.14
+        },
+        {
+          "size": "Small",
+          "grams": 4.0,
+          "cost": 0.028
+        }
+      ]
+    }
+  ]
+}

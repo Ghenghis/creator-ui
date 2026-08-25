@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,14 +6,6 @@ using UnityEngine;
 
 namespace creator_ui.LLM
 {
-    // Client for the Barros sidecar backend (Ghenghis/Barros-Pizza-Creator).
-    // Endpoints:
-    //   GET  /health
-    //   POST /compose -> returns full PC3 PizzaModel JSON (with .final shape)
-    //   POST /chat    -> chat-mode turn (returns assistant message + optional recipe)
-    //   POST /lab     -> batch of N recipes ranked by taste
-    //
-    // The Barros sidecar handles all LLM orchestration; this client just calls its REST API.
     public class BarrosBackend
     {
         private readonly HttpClient _http;
@@ -25,7 +16,7 @@ namespace creator_ui.LLM
         public BarrosBackend(string baseUrl = "http://127.0.0.1:48173")
         {
             _baseUrl = baseUrl.TrimEnd('/');
-            _http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
+            _http = new HttpClient { Timeout = TimeSpan.FromSeconds(180) };
         }
 
         public async Task<bool> HealthAsync()
@@ -41,20 +32,25 @@ namespace creator_ui.LLM
             }
         }
 
-        // /compose — full PizzaModel recipe from theme prompt
-        public async Task<string> ComposeAsync(string systemPrompt, string userPrompt, string heat = "Medium")
+        // /compose — accepts full catalog (87 ingredients), returns BarrosComposeResponse
+        public async Task<string> ComposeWithCatalogAsync(string userPrompt, string[] catalogJsonArray, string heat = "Medium")
         {
-            var payload = "{\"system\":\"" + Escape(systemPrompt) +
-                          "\",\"user\":\"" + Escape(userPrompt) +
-                          "\",\"heat\":\"" + heat + "\"}";
-            var content = new StringContent(payload, Encoding.UTF8, "application/json");
+            var sb = new StringBuilder();
+            sb.Append("{\"prompt\":\"").Append(Escape(userPrompt)).Append("\",\"heat\":\"").Append(heat).Append("\",\"count\":1,\"catalog\":[");
+            for (int i = 0; i < catalogJsonArray.Length; i++)
+            {
+                if (i > 0) sb.Append(",");
+                sb.Append(catalogJsonArray[i]);
+            }
+            sb.Append("]}");
+            var content = new StringContent(sb.ToString(), Encoding.UTF8, "application/json");
             var resp = await _http.PostAsync($"{_baseUrl}/compose", content);
             resp.EnsureSuccessStatusCode();
             return await resp.Content.ReadAsStringAsync();
         }
 
-        // /chat — chat-mode turn; returns assistant text (recipe JSON embedded)
-        public async Task<string> ChatAsync(string systemPrompt, string userPrompt, List<(string role, string content)> history = null)
+        // /chat — chat-mode turn with history
+        public async Task<string> ChatAsync(string systemPrompt, string userPrompt, System.Collections.Generic.List<(string role, string content)> history = null)
         {
             var sb = new StringBuilder();
             sb.Append("{\"system\":\"").Append(Escape(systemPrompt)).Append("\",\"user\":\"").Append(Escape(userPrompt)).Append("\"");
@@ -76,16 +72,27 @@ namespace creator_ui.LLM
         }
 
         // /lab — batch generation
-        public async Task<string> LabAsync(string systemPrompt, string[] tags, int count = 3)
+        public async Task<string> LabAsync(string systemPrompt, string[] tags, int count = 3, string[] catalogJsonArray = null)
         {
             var sb = new StringBuilder();
-            sb.Append("{\"system\":\"").Append(Escape(systemPrompt)).Append("\",\"tags\":[");
+            sb.Append("{\"prompt\":\"").Append(Escape(systemPrompt)).Append("\",\"tags\":[");
             for (int i = 0; i < tags.Length; i++)
             {
                 if (i > 0) sb.Append(",");
                 sb.Append("\"").Append(Escape(tags[i])).Append("\"");
             }
-            sb.Append("],\"count\":").Append(count).Append("}");
+            sb.Append("],\"count\":").Append(count);
+            if (catalogJsonArray != null && catalogJsonArray.Length > 0)
+            {
+                sb.Append(",\"catalog\":[");
+                for (int i = 0; i < catalogJsonArray.Length; i++)
+                {
+                    if (i > 0) sb.Append(",");
+                    sb.Append(catalogJsonArray[i]);
+                }
+                sb.Append("]");
+            }
+            sb.Append("}");
             var content = new StringContent(sb.ToString(), Encoding.UTF8, "application/json");
             var resp = await _http.PostAsync($"{_baseUrl}/lab", content);
             resp.EnsureSuccessStatusCode();
