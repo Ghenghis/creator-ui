@@ -215,6 +215,44 @@ async function previews() {
   }
 }
 
+async function special() {
+  const themes = [
+    'Spicy diavola with hot salami and chili oil',
+    'Margherita with fresh basil from the garden',
+    'Quattro formaggi with aged Italian cheeses',
+    'Hawaiian with pineapple and smoked ham',
+    'Vegan supreme with mushrooms and roasted peppers',
+    'Mediterranean with olives, feta, and sun-dried tomatoes',
+    'Pepperoni and jalapeño with hot honey drizzle',
+    'Buffalo chicken with blue cheese and celery',
+    'Truffle mushroom with arugula and parmesan',
+    'Pesto chicken with sun-dried tomatoes',
+    'White pizza with ricotta and garlic',
+    'BBQ pulled pork with smoked gouda',
+    'Spinach and artichoke with cream cheese',
+    'Greek-style with olives, feta, and oregano',
+    'Meat lovers with pepperoni, sausage, and bacon',
+    'Dessert pizza with Nutella and strawberries',
+    'Lemon and ricotta with fresh basil',
+    'Sausage and caramelized onion',
+    'Roasted vegetable medley with balsamic glaze',
+    'Shrimp scampi with garlic and parsley'
+  ];
+  let theme;
+  if (flags.seed) {
+    const seed = parseInt(flags.seed);
+    theme = themes[Math.abs(Math.floor(Math.sin(seed) * 10000)) % themes.length];
+  } else {
+    theme = themes[Math.floor(Math.random() * themes.length)];
+  }
+  const name = `Special-${Date.now()}`;
+  console.log(`🎲 Today's special: "${theme}"`);
+  flags._positional = [theme];
+  flags.name = name;
+  flags.heat = flags.heat || 'Medium';
+  await compose();
+}
+
 // === Dispatch ===
 console.log('');
 switch (cmd) {
@@ -224,11 +262,13 @@ switch (cmd) {
   case 'lab': await lab(); break;
   case 'verify': await verify(); break;
   case 'previews': await previews(); break;
+  case 'special': await special(); break;
   default:
     console.log(`Barro's Pizza CLI`);
     console.log(`Usage:`);
     console.log(`  barro compose "Make a margherita pizza" [--name Margherita] [--heat Medium]`);
     console.log(`  barro lab --tags "spicy,budget,under-15" [--count 3]`);
+    console.log(`  barro special [--seed X]`);
     console.log(`  barro verify <pizza.final.json>`);
     console.log(`  barro previews --all`);
     console.log(`  barro previews <pizza.json>...`);
