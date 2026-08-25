@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-// End-to-end integration test: creator-ui catalog -> Barros sidecar -> LMStudio -> PC3 recipe
-// Also runs Slice 1 .NET verifier on generated outputs.
-// Usage: node tools/integration-test.mjs [--skip-verifier]
+// End-to-end integration test: creator-ui catalog -> Barros sidecar -> LMStudio -> PC3 recipe -> texture -> Slice 1 verifier
+// Usage: node tools/integration-test.mjs [--skip-verifier] [--skip-texture]
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
 import { execSync } from 'child_process';
@@ -14,6 +13,7 @@ const outDir = process.env.OUT_DIR || join(projectRoot, 'output');
 const verifierDir = process.env.VERIFIER_DIR || 'S:/Unity_Games/PC3 - Pizza Creator/_pizza-agent';
 const gameDir = process.env.GAME_DIR || 'S:/Unity_Games/PC3 - Pizza Creator/_decompiled/Assembly-CSharp';
 const skipVerifier = process.argv.includes('--skip-verifier');
+const skipTexture = process.argv.includes('--skip-texture');
 
 mkdirSync(outDir, { recursive: true });
 
@@ -49,16 +49,26 @@ async function composeRecipe(prompt, heat = 'Medium') {
   return await r.json();
 }
 
+function renderTexture(pizzaPath) {
+  try {
+    execSync(`node "${join(projectRoot, 'tools/render-texture.mjs')}" "${pizzaPath}"`, { stdio: 'pipe', timeout: 30000 });
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 function runVerifier(pizzaPath) {
+  const reportPath = `C:/Users/Admin/AppData/Local/Temp/vr-${Date.now()}.json`;
   try {
     const out = execSync(
-      `cd "${verifierDir}" && dotnet run --project verifier/PizzaAgent.Verify.csproj -- --pizza "${pizzaPath}" --game-dir "${gameDir}"`,
+      `cd "${verifierDir}" && dotnet run --project verifier/PizzaAgent.Verify.csproj -- --pizza "${pizzaPath}" --game-dir "${gameDir}" --out "${reportPath}"`,
       { stdio: 'pipe', timeout: 60000 }
     ).toString();
-    return { ok: out.includes('"passed": true') || out.includes('"passed":true'), output: out };
+    const report = JSON.parse(readFileSync(reportPath, 'utf-8'));
+    return { ok: report.passed, report };
   } catch (e) {
-    const stderr = e.stderr?.toString() || e.stdout?.toString() || e.message;
-    return { ok: false, output: stderr };
+    return { ok: false, report: null, error: e.message };
   }
 }
 
@@ -114,12 +124,28 @@ try {
     writeFileSync(finalPath, JSON.stringify(pc3, null, 2));
     log(`   Wrote: ${finalPath}`);
 
+    // Render texture (PIL placeholder)
+    if (!skipTexture) {
+      const texOk = renderTexture(finalPath);
+      log(`   Texture: ${texOk ? 'embedded (256x256 PNG)' : 'FAILED'}`);
+    }
+
     // Run Slice 1 verifier
     if (!skipVerifier && existsSync(finalPath)) {
       const v = runVerifier(finalPath);
-      const deserializes = v.output.includes('Deserialized');
-      const textureEmpty = v.output.includes('Texture is empty');
-      log(`   Verifier: ${deserializes ? 'deserialize-OK' : 'FAIL'}; texture=${textureEmpty ? 'empty (expected)' : 'present'}`);
+      if (v.ok) {
+        log(`   Verifier: ✅ PASSED`);
+        const checks = v.report?.info?.map(i => i.Check) || [];
+        log(`     Checks: ${checks.join(', ')}`);
+      } else {
+        log(`   Verifier: ❌ FAILED`);
+        if (v.report) {
+          for (const e of v.report.errors) log(`     ERROR: ${e.Check} - ${e.Message}`);
+        } else {
+          log(`     ERROR: ${v.error}`);
+        }
+        allPassed = false;
+      }
     }
   }
 
