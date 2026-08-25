@@ -1,14 +1,19 @@
 #!/usr/bin/env node
 // End-to-end integration test: creator-ui catalog -> Barros sidecar -> LMStudio -> PC3 recipe
-// Usage: node tools/integration-test.mjs [--out <dir>]
-import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+// Also runs Slice 1 .NET verifier on generated outputs.
+// Usage: node tools/integration-test.mjs [--skip-verifier]
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
+import { execSync } from 'child_process';
 
 const projectRoot = process.env.CREATOR_UI_ROOT || 'S:/Unity_Games/PC3 - Pizza Creator/creator-ui';
 const catalogPath = join(projectRoot, 'Assets/StreamingAssets/catalog.json');
 const barrosBase = process.env.BARROS_URL || 'http://127.0.0.1:48173';
 const lmstudioBase = 'http://127.0.0.1:1234';
 const outDir = process.env.OUT_DIR || join(projectRoot, 'output');
+const verifierDir = process.env.VERIFIER_DIR || 'S:/Unity_Games/PC3 - Pizza Creator/_pizza-agent';
+const gameDir = process.env.GAME_DIR || 'S:/Unity_Games/PC3 - Pizza Creator/_decompiled/Assembly-CSharp';
+const skipVerifier = process.argv.includes('--skip-verifier');
 
 mkdirSync(outDir, { recursive: true });
 
@@ -34,12 +39,7 @@ async function checkBackend(url, name) {
 }
 
 async function composeRecipe(prompt, heat = 'Medium') {
-  const payload = {
-    prompt,
-    catalog: barrosCatalog,
-    count: 1,
-    heat
-  };
+  const payload = { prompt, catalog: barrosCatalog, count: 1, heat };
   const r = await fetch(`${barrosBase}/compose`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -47,6 +47,19 @@ async function composeRecipe(prompt, heat = 'Medium') {
   });
   if (!r.ok) throw new Error(`Barros HTTP ${r.status}: ${await r.text()}`);
   return await r.json();
+}
+
+function runVerifier(pizzaPath) {
+  try {
+    const out = execSync(
+      `cd "${verifierDir}" && dotnet run --project verifier/PizzaAgent.Verify.csproj -- --pizza "${pizzaPath}" --game-dir "${gameDir}"`,
+      { stdio: 'pipe', timeout: 60000 }
+    ).toString();
+    return { ok: out.includes('"passed": true') || out.includes('"passed":true'), output: out };
+  } catch (e) {
+    const stderr = e.stderr?.toString() || e.stdout?.toString() || e.message;
+    return { ok: false, output: stderr };
+  }
 }
 
 const tests = [];
@@ -57,6 +70,7 @@ log(`creator-ui: ${projectRoot}`);
 log(`Barros: ${await checkBackend(barrosBase + '/health', 'Barros sidecar')}`);
 log(`LMStudio: ${await checkBackend(lmstudioBase + '/v1/models', 'LMStudio')}`);
 
+let allPassed = true;
 try {
   const themes = [
     { prompt: 'Make a margherita pizza. Tomato sauce, mozzarella, fresh basil.', name: 'Margherita' },
@@ -71,10 +85,11 @@ try {
     const dt = ((Date.now() - t0) / 1000).toFixed(1);
     if (!resp.ok) {
       log(`FAIL: ${t.name} - ${resp.message}`);
+      allPassed = false;
       continue;
     }
     const r = resp.recipes[0];
-    log(`OK [${dt}s]: ${r.name} (${r.shape}) - ${r.ingredients.length} ingredients`);
+    log(`Barros [${dt}s]: ${r.name} (${r.shape}) - ${r.ingredients.length} ingredients`);
     for (const ing of r.ingredients) {
       log(`   - ${ing.id} ${ing.size} ${ing.target_grams}g (${ing.distribution})`);
     }
@@ -98,9 +113,18 @@ try {
     const finalPath = join(outDir, `${safeName}-${Date.now()}.final.json`);
     writeFileSync(finalPath, JSON.stringify(pc3, null, 2));
     log(`   Wrote: ${finalPath}`);
+
+    // Run Slice 1 verifier
+    if (!skipVerifier && existsSync(finalPath)) {
+      const v = runVerifier(finalPath);
+      const deserializes = v.output.includes('Deserialized');
+      const textureEmpty = v.output.includes('Texture is empty');
+      log(`   Verifier: ${deserializes ? 'deserialize-OK' : 'FAIL'}; texture=${textureEmpty ? 'empty (expected)' : 'present'}`);
+    }
   }
 
-  log(`\n=== PASS: ${themes.length} recipes generated ===`);
+  log(`\n=== ${allPassed ? 'PASS' : 'PARTIAL'}: ${themes.length} recipes generated ===`);
+  if (!allPassed) process.exit(1);
 } catch (e) {
   log(`\n=== FAIL: ${e.message} ===`);
   process.exit(1);
