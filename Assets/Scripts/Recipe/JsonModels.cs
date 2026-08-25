@@ -42,6 +42,7 @@ namespace creator_ui.Recipe
         public IngredientSelectionData[] ingredients;
         public ScoresData scores;
         public MetaData _meta;
+        public float profit_factor = 1.5f;
     }
 
     [Serializable]

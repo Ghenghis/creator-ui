@@ -127,17 +127,30 @@ async function compose() {
   console.log(`   Scores: taste=${r.scores.taste} cost=$${r.scores.cost} profit=${r.scores.profit}%`);
   for (const ing of r.ingredients) console.log(`   - ${ing.id} ${ing.size} ${ing.target_grams}g (${ing.distribution})`);
 
-  // Write PC3 DataContract
+  // Write PC3 DataContract (matches JsonExporter.WriteFinal format)
+  const SIZE_MAP = { 'Large': 0, 'Small': 2 };
   const pc3 = {
     ID: name + '-' + Date.now(),
+    Name: r.name,
+    DoughSize: r.shape === 'Square' ? 'Large' : (r.shape === 'Star' ? 'Large' : 'Large'),  // Barros only outputs Round/Square/Star/Triangle; default Large
+    DoughShape: r.shape,
     Ingredients: r.ingredients.map(ing => ({
       IngredientID: ing.id,
       Rotation: { x: 0, y: 0, z: 0 },
       Position: { x: 0, y: 0, z: 0.95 },
-      Size: ing.size === 'Large' ? 0 : ing.size === 'Small' ? 2 : 1
+      Size: SIZE_MAP[ing.size] ?? 1,
+      AmountG: ing.target_grams,
+      DisplaySize: ing.size
     })),
     DoughPositions: [{ x: 0, y: 0, z: 0 }],
     ProfitFactor: r.profit_factor || 1.5,
+    Scores: r.scores ? {
+      taste: r.scores.taste,
+      cost_dollars: r.scores.cost,
+      profit_percent: r.scores.profit,
+      novelty: r.scores.novelty ?? 75
+    } : null,
+    Summary: r.summary || '',
     Owner: null,
     Texture: ''
   };
@@ -383,6 +396,64 @@ async function cookbook() {
   }
 }
 
+async function stats() {
+  const cookbookPath = join(projectRoot, 'docs/evidence/cookbook.html');
+  console.log(`📊 Barro's Pizza Pipeline Stats`);
+  console.log(`===========================`);
+  const files = readdirSync(outDir).filter(f => f.endsWith('.final.json'));
+  let withTexture = 0;
+  let totalIngredients = 0;
+  let totalCost = 0;
+  let maxTaste = 0;
+  let maxTasteRecipe = '';
+  const flavors = new Set();
+  for (const f of files) {
+    try {
+      const p = JSON.parse(readFileSync(join(outDir, f), 'utf-8'));
+      if (p.Texture) withTexture++;
+      const ings = p.Ingredients || [];
+      totalIngredients += ings.length;
+      const cost = p.scores?.cost_dollars ?? p.scores?.cost ?? 0;
+      totalCost += cost;
+      const taste = p.scores?.taste ?? 0;
+      if (taste > maxTaste) {
+        maxTaste = taste;
+        maxTasteRecipe = p.ID;
+      }
+      ings.forEach(i => flavors.add(i.IngredientID));
+    } catch { /* skip */ }
+  }
+  console.log(`Total recipes:         ${files.length}`);
+  console.log(`With texture:          ${withTexture} (${((withTexture / files.length) * 100).toFixed(0)}%)`);
+  console.log(`Unique ingredients:    ${flavors.size}`);
+  console.log(`Avg ingredients/recipe: ${(totalIngredients / files.length).toFixed(1)}`);
+  console.log(`Total recipe cost:      $${totalCost.toFixed(2)}`);
+  console.log(`Best taste score:       ${maxTaste} (${maxTasteRecipe})`);
+  // Top 5 ingredients
+  const ingredientCount = new Map();
+  for (const f of files) {
+    try {
+      const p = JSON.parse(readFileSync(join(outDir, f), 'utf-8'));
+      for (const i of p.Ingredients || []) {
+        ingredientCount.set(i.IngredientID, (ingredientCount.get(i.IngredientID) || 0) + 1);
+      }
+    } catch { /* skip */ }
+  }
+  const top5 = [...ingredientCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+  console.log(`\nTop 5 ingredients:`);
+  for (const [name, count] of top5) {
+    console.log(`  ${name.padEnd(20)} ${count} recipes`);
+  }
+  // Favorites
+  const favDir = join(projectRoot, 'docs/evidence/favorites');
+  if (existsSync(favDir)) {
+    const favs = readdirSync(favDir).filter(f => f.endsWith('.final.json'));
+    console.log(`\nFavorites:             ${favs.length}`);
+  }
+  console.log(`\nRecipe gallery:        ${existsSync(cookbookPath) ? '✅ built' : '❌ not built'}`);
+  console.log(`Cookbook recipe count: ${files.length}`);
+}
+
 // === Dispatch ===
 console.log('');
 switch (cmd) {
@@ -399,6 +470,7 @@ switch (cmd) {
   case 'export': await exportRecipe(); break;
   case 'daily': await dailySpecial(); break;
   case 'cookbook': await cookbook(); break;
+  case 'stats': await stats(); break;
   default:
     console.log(`Barro's Pizza CLI`);
     console.log(`Usage:`);
@@ -411,6 +483,7 @@ switch (cmd) {
     console.log(`  barro export <pizza.json> --format md|json|html`);
     console.log(`  barro daily [--force]`);
     console.log(`  barro cookbook`);
+    console.log(`  barro stats`);
     console.log(`  barro verify <pizza.final.json>`);
     console.log(`  barro previews --all`);
     console.log(`  barro previews <pizza.json>...`);

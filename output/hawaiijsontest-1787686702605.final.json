@@ -1,0 +1,57 @@
+{
+  "ID": "HawaiiJSONTest-1787686702605",
+  "Ingredients": [
+    {
+      "IngredientID": "Mozzarella",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 0
+    },
+    {
+      "IngredientID": "Bacon",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 1
+    },
+    {
+      "IngredientID": "Tomato",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 2
+    }
+  ],
+  "DoughPositions": [
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  ],
+  "ProfitFactor": 0.85,
+  "Owner": null,
+  "Texture": ""
+}

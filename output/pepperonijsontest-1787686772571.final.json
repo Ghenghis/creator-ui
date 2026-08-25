@@ -1,0 +1,73 @@
+{
+  "ID": "PepperoniJSONTest-1787686772571",
+  "Name": "Extra Cheese Pepperoni Pizza",
+  "DoughSize": "Large",
+  "DoughShape": "Round",
+  "Ingredients": [
+    {
+      "IngredientID": "Mozzarella",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 0,
+      "AmountG": 250,
+      "DisplaySize": "Large"
+    },
+    {
+      "IngredientID": "Bacon",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 0,
+      "AmountG": 90,
+      "DisplaySize": "Large"
+    },
+    {
+      "IngredientID": "Tomato",
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.95
+      },
+      "Size": 1,
+      "AmountG": 63,
+      "DisplaySize": "Medium"
+    }
+  ],
+  "DoughPositions": [
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  ],
+  "ProfitFactor": 0.72,
+  "Scores": {
+    "taste": 82.5,
+    "cost_dollars": 2.39,
+    "profit_percent": 41.9,
+    "novelty": 52
+  },
+  "Summary": "Loaded mozzarella pizza with bacon and tomatoes for a rich flavor profile.",
+  "Owner": null,
+  "Texture": ""
+}

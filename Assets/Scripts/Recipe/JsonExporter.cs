@@ -19,7 +19,13 @@ namespace creator_ui.Recipe
         {
             var sb = new StringBuilder();
             sb.AppendLine("{");
-            sb.AppendLine($"  \"ID\": \"{Guid.NewGuid()}\",");
+            sb.AppendLine($"  \"ID\": \"{EscapeString(recipe?.name ?? "recipe")}-{DateTime.UtcNow.Ticks}\",");
+            sb.AppendLine($"  \"Name\": \"{EscapeString(recipe?.name ?? "Pizza")}\",");
+            if (recipe?.dough != null)
+            {
+                sb.AppendLine($"  \"DoughSize\": \"{EscapeString(recipe.dough.size ?? "Large")}\",");
+                sb.AppendLine($"  \"DoughShape\": \"{EscapeString(recipe.dough.shape ?? "Round")}\",");
+            }
             sb.AppendLine("  \"Ingredients\": [");
             if (recipe?.ingredients != null)
             {
@@ -32,19 +38,37 @@ namespace creator_ui.Recipe
                     float rx = ing.rotation != null && ing.rotation.Length > 0 ? ing.rotation[0] : 0;
                     float ry = ing.rotation != null && ing.rotation.Length > 1 ? ing.rotation[1] : 0;
                     float rz = ing.rotation != null && ing.rotation.Length > 2 ? ing.rotation[2] : 0;
-                    sb.AppendLine($"    {{\"IngredientID\":\"{ing.id}\",\"Rotation\":{{\"x\":{rx},\"y\":{ry},\"z\":{rz}}},\"Position\":{{\"x\":{px},\"y\":{py},\"z\":{pz}}},\"Size\":{SizeToInt(ing.size)}}}");
-                    if (i < recipe.ingredients.Length - 1) sb.AppendLine(",");
-                    else sb.AppendLine();
+                    sb.AppendLine($"    {{\"IngredientID\":\"{ing.id}\",\"Rotation\":{{\"x\":{rx.ToString(System.Globalization.CultureInfo.InvariantCulture)},\"y\":{ry.ToString(System.Globalization.CultureInfo.InvariantCulture)},\"z\":{rz.ToString(System.Globalization.CultureInfo.InvariantCulture)}}},\"Position\":{{\"x\":{px.ToString(System.Globalization.CultureInfo.InvariantCulture)},\"y\":{py.ToString(System.Globalization.CultureInfo.InvariantCulture)},\"z\":{pz.ToString(System.Globalization.CultureInfo.InvariantCulture)}}}");
+                    sb.AppendLine($",\"Size\":{SizeToInt(ing.size)}");
+                    sb.AppendLine($",\"AmountG\":{ing.amount_g.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
+                    sb.AppendLine($",\"DisplaySize\":\"{EscapeString(ing.size ?? "Medium")}\"");
+                    sb.AppendLine("}");
                 }
             }
             sb.AppendLine("  ],");
             sb.AppendLine("  \"DoughPositions\": [{\"x\":0,\"y\":0,\"z\":0}],");
-            sb.AppendLine("  \"ProfitFactor\": 1.5,");
+            sb.AppendLine($"  \"ProfitFactor\": {(recipe != null && recipe.profit_factor > 0 ? recipe.profit_factor : 1.5f).ToString(System.Globalization.CultureInfo.InvariantCulture)},");
+            if (recipe?.scores != null)
+            {
+                sb.AppendLine("  \"Scores\": {");
+                sb.AppendLine($"    \"taste\": {recipe.scores.taste.ToString(System.Globalization.CultureInfo.InvariantCulture)},");
+                sb.AppendLine($"    \"cost_dollars\": {recipe.scores.cost_dollars.ToString(System.Globalization.CultureInfo.InvariantCulture)},");
+                sb.AppendLine($"    \"profit_percent\": {recipe.scores.profit_percent.ToString(System.Globalization.CultureInfo.InvariantCulture)},");
+                sb.AppendLine($"    \"novelty\": {recipe.scores.novelty.ToString(System.Globalization.CultureInfo.InvariantCulture)}");
+                sb.AppendLine("  },");
+            }
+            sb.AppendLine($"  \"Summary\": \"{EscapeString(recipe?.summary ?? "")}\",");
             sb.AppendLine("  \"Owner\": null,");
             sb.AppendLine("  \"Texture\": \"\"");
             sb.AppendLine("}");
             File.WriteAllText(outputPath, sb.ToString());
             Debug.Log($"[JsonExporter] Wrote {outputPath}");
+        }
+
+        private static string EscapeString(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+            return s.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "\\r").Replace("\t", "\\t");
         }
 
         public static void WriteRecipe(RecipeData recipe, string outputPath)
