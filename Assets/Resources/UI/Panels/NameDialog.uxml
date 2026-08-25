@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="name-dialog" class="name-dialog">
+        <ui:VisualElement name="name-dialog__box" class="name-dialog__box">
+            <ui:Label name="name-dialog__title" class="name-dialog__title" text="Name this pizza" />
+            <ui:TextField name="name-dialog__input" class="name-dialog__input" value="Pizza Nonamo" />
+            <ui:VisualElement name="name-dialog__buttons" class="name-dialog__buttons">
+                <ui:Button name="name-dialog__continue" class="btn btn-primary" text="Continue" />
+                <ui:Button name="name-dialog__cancel" class="btn btn-secondary" text="Cancel" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

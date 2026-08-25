@@ -1,0 +1,35 @@
+@import url("../Shared/Theme.uss");
+
+.name-dialog {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.name-dialog__box {
+    width: 400px;
+    background-color: var(--color-panel);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    border-width: 2px;
+    border-color: var(--color-accent);
+}
+
+.name-dialog__title {
+    font-size: var(--font-size-heading);
+    -unity-font-style: bold;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+    -unity-text-align: middle-center;
+}
+
+.name-dialog__input {
+    margin-bottom: var(--spacing-md);
+}
+
+.name-dialog__buttons {
+    flex-direction: row;
+    justify-content: space-between;
+}

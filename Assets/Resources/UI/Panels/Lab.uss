@@ -1,0 +1,79 @@
+@import url("../Shared/Theme.uss");
+@import url("../Shared/Buttons.uss");
+@import url("../Shared/Cards.uss");
+@import url("../Shared/Bars.uss");
+
+.lab-panel {
+    width: 380px;
+    background-color: var(--color-panel);
+    padding: var(--spacing-md);
+    flex-direction: column;
+}
+
+.lab__autopilot-row {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.lab__autopilot-label {
+    font-size: var(--font-size-caption);
+    margin-right: var(--spacing-xs);
+    color: var(--color-text-secondary);
+}
+
+.lab__autopilot-toggle {
+    width: 36px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: var(--color-text-muted);
+}
+
+.lab__autopilot-toggle--on { background-color: var(--color-accent); }
+
+.lab__prompt {
+    background-color: #ffffff;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    border-width: 1px;
+    border-color: var(--color-border);
+}
+
+.lab__prompt-label { -unity-font-style: bold; margin-bottom: var(--spacing-xs); }
+
+.lab__tags { flex-direction: row; flex-wrap: wrap; margin-bottom: var(--spacing-sm); }
+
+.lab__surprise { width: 100%; }
+
+.lab__recipes { flex-grow: 1; max-height: 220px; }
+
+.lab__why {
+    background-color: #ffffff;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    border-width: 1px;
+    border-color: var(--color-border);
+}
+
+.lab__why-label { -unity-font-style: bold; margin-bottom: var(--spacing-xs); }
+.lab__why-text { margin-bottom: var(--spacing-xs); white-space: normal; }
+
+.lab__footer {
+    flex-direction: row;
+    align-items: center;
+    margin-top: var(--spacing-md);
+}
+
+.lab__input { flex-grow: 1; margin: 0 var(--spacing-xs); }
+
+.lab__mic-btn, .lab__attach-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: transparent;
+    border-width: 1px;
+    border-color: var(--color-border);
+}

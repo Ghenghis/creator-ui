@@ -1,0 +1,75 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="designer-panel" class="designer-panel">
+        <ui:VisualElement class="panel-header">
+            <ui:Label text="Barro's AI Pizza Designer" class="panel-header__title" />
+            <ui:VisualElement class="designer__online-row">
+                <ui:Label text="● Online" class="designer__online" />
+            </ui:VisualElement>
+            <ui:Button name="designer__close" class="panel-header__close" text="x" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="designer__tabs" class="designer__tabs">
+            <ui:Button name="designer-tab-build" class="btn-chip btn-chip--active" text="Build with me" />
+            <ui:Button name="designer-tab-surprise" class="btn-chip" text="Surprise me" />
+            <ui:Button name="designer-tab-improve" class="btn-chip" text="Improve this" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="designer__chat" class="designer__chat">
+            <ui:VisualElement class="chat-msg chat-msg--user">
+                <ui:Label name="designer__msg-user" class="chat-msg__text" text="Make a bold Arizona pizza, spicy but not extreme." />
+            </ui:VisualElement>
+            <ui:VisualElement class="chat-msg chat-msg--ai">
+                <ui:Label name="designer__msg-ai" class="chat-msg__text" text="Here's a bold Arizona-style pizza with smoky, spicy flavors and balance." />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="designer__recipe" class="card card-recipe-draft">
+            <ui:VisualElement class="card-recipe-draft__header">
+                <ui:Label name="designer__recipe-name" text="Sonoran Smokehouse" class="card-recipe-draft__title" />
+                <ui:Label text="*" class="designer__recipe-star" />
+            </ui:VisualElement>
+            <ui:VisualElement class="designer__recipe-fields">
+                <ui:VisualElement class="designer__field-row"><ui:Label text="Crust" class="designer__field-label" /><ui:Label name="designer__crust" text="Hand-Tossed" class="designer__field-value" /></ui:VisualElement>
+                <ui:VisualElement class="designer__field-row"><ui:Label text="Sauce" class="designer__field-label" /><ui:Label name="designer__sauce" text="Chipotle Tomato" class="designer__field-value" /></ui:VisualElement>
+                <ui:VisualElement class="designer__field-row"><ui:Label text="Cheese" class="designer__field-label" /><ui:Label name="designer__cheese" text="Low-Moisture Mozzarella" class="designer__field-value" /></ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="designer__toppings" class="designer__toppings">
+                <ui:Button class="btn-tag" text="Smoked Bacon" />
+                <ui:Button class="btn-tag" text="Spicy Italian Sausage" />
+                <ui:Button class="btn-tag" text="Roasted Red Peppers" />
+                <ui:Button class="btn-tag" text="Red Onion" />
+                <ui:Button class="btn-tag" text="Jalapenos" />
+                <ui:Button class="btn-tag" text="Smoked Gouda" />
+                <ui:Button class="btn-tag" text="Cilantro" />
+            </ui:VisualElement>
+            <ui:Label name="designer__summary" class="designer__summary" text="Smoky chipotle sauce and gouda bring depth, while spicy sausage and jalapenos add just the right kick. Cilantro brightens every bite." />
+            <ui:VisualElement name="designer__scores" class="designer__scores">
+                <ui:Label name="designer__taste" text="92" class="designer__score" />
+                <ui:Label name="designer__cost" text="78" class="designer__score" />
+                <ui:Label name="designer__pop" text="88" class="designer__score" />
+            </ui:VisualElement>
+            <ui:VisualElement class="designer__recipe-actions">
+                <ui:Button name="designer__3-versions" class="btn btn-secondary" text="Try 3 versions" />
+                <ui:Button name="designer__balance" class="btn btn-secondary" text="Balance flavor" />
+                <ui:Button name="designer__lower-cost" class="btn btn-secondary" text="Lower cost" />
+                <ui:Button name="designer__apply" class="btn btn-primary" text="Apply to pizza" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="designer__generating" class="designer__generating">
+            <ui:Label text="Generating recipe..." class="designer__generating-label" />
+            <ui:ProgressBar name="designer__progress" value="0" low-value="0" high-value="1" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="designer__input" class="designer__input">
+            <ui:TextField name="designer__text" class="designer__text" placeholder="Describe your pizza..." />
+            <ui:VisualElement class="designer__input-actions">
+                <ui:Button name="designer__mic" class="designer__icon-btn" text="mic" />
+                <ui:Button name="designer__attach" class="designer__icon-btn" text="img" />
+                <ui:Button name="designer__paperclip" class="designer__icon-btn" text="clip" />
+                <ui:VisualElement style="flex-grow: 1;" />
+                <ui:Button name="designer__send" class="btn btn-primary designer__send" text="Send" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

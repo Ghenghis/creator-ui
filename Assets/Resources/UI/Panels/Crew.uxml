@@ -1,0 +1,89 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="crew-panel" class="crew-panel">
+        <ui:VisualElement class="panel-header">
+            <ui:Label text="Barro's Design Crew" class="panel-header__title" />
+            <ui:VisualElement class="crew-panel__status">
+                <ui:Label name="crew-status-dot" text="●" class="crew-status-dot" />
+                <ui:Label name="crew-status-text" text="4 agents ready" class="crew-status-text" />
+            </ui:VisualElement>
+            <ui:Button name="crew__close" class="panel-header__close" text="x" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="crew__members" class="crew__members">
+            <ui:VisualElement class="card-crew-member" name="crew-flavor">
+                <ui:VisualElement class="card-crew-member__icon" style="background-color: #b9452e;" />
+                <ui:VisualElement class="card-crew-member__body">
+                    <ui:Label text="Flavor Chef" class="crew-member__name" />
+                    <ui:Label text="Suggesting bold, craveable combinations." class="crew-member__sub" />
+                </ui:VisualElement>
+                <ui:Label text="✓" class="crew-member__check" />
+            </ui:VisualElement>
+            <ui:VisualElement class="card-crew-member" name="crew-cost">
+                <ui:VisualElement class="card-crew-member__icon" style="background-color: #2e7d8f;" />
+                <ui:VisualElement class="card-crew-member__body">
+                    <ui:Label text="Cost Manager" class="crew-member__name" />
+                    <ui:Label text="Keeping ingredients efficient." class="crew-member__sub" />
+                </ui:VisualElement>
+                <ui:Label text="✓" class="crew-member__check" />
+            </ui:VisualElement>
+            <ui:VisualElement class="card-crew-member" name="crew-customer">
+                <ui:VisualElement class="card-crew-member__icon" style="background-color: #6b8e23;" />
+                <ui:VisualElement class="card-crew-member__body">
+                    <ui:Label text="Customer Scout" class="crew-member__name" />
+                    <ui:Label text="Tracking trends and preferences." class="crew-member__sub" />
+                </ui:VisualElement>
+                <ui:Label text="✓" class="crew-member__check" />
+            </ui:VisualElement>
+            <ui:VisualElement class="card-crew-member" name="crew-creative">
+                <ui:VisualElement class="card-crew-member__icon" style="background-color: #8f5e2e;" />
+                <ui:VisualElement class="card-crew-member__body">
+                    <ui:Label text="Creative Director" class="crew-member__name" />
+                    <ui:Label text="Ensuring a unique signature." class="crew-member__sub" />
+                </ui:VisualElement>
+                <ui:Label text="✓" class="crew-member__check" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="crew__consensus" class="crew__consensus">
+            <ui:Label text="Crew consensus" class="crew__consensus-title" />
+            <ui:VisualElement name="crew__pizza-name-row" class="crew__pizza-name-row">
+                <ui:Label text="Proposed pizza name" class="crew__pizza-name-label" />
+                <ui:Label name="crew__pizza-name" text="" class="crew__pizza-name" />
+            </ui:VisualElement>
+            <ui:VisualElement name="crew__bars">
+                <ui:VisualElement class="bar-row">
+                    <ui:Label text="Flavor" class="bar-row__label" />
+                    <ui:VisualElement class="bar-row__track"><ui:VisualElement name="bar-flavor" class="bar__fill bar__fill--success" /></ui:VisualElement>
+                    <ui:Label name="bar-flavor-val" text="0" class="bar-row__value" />
+                </ui:VisualElement>
+                <ui:VisualElement class="bar-row">
+                    <ui:Label text="Profit" class="bar-row__label" />
+                    <ui:VisualElement class="bar-row__track"><ui:VisualElement name="bar-profit" class="bar__fill bar__fill--warning" /></ui:VisualElement>
+                    <ui:Label name="bar-profit-val" text="0" class="bar-row__value" />
+                </ui:VisualElement>
+                <ui:VisualElement class="bar-row">
+                    <ui:Label text="Popularity" class="bar-row__label" />
+                    <ui:VisualElement class="bar-row__track"><ui:VisualElement name="bar-popularity" class="bar__fill bar__fill--success" /></ui:VisualElement>
+                    <ui:Label name="bar-popularity-val" text="0" class="bar-row__value" />
+                </ui:VisualElement>
+                <ui:VisualElement class="bar-row">
+                    <ui:Label text="Originality" class="bar-row__label" />
+                    <ui:VisualElement class="bar-row__track"><ui:VisualElement name="bar-originality" class="bar__fill" /></ui:VisualElement>
+                    <ui:Label name="bar-originality-val" text="0" class="bar-row__value" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="crew__discussion" class="crew__discussion">
+            <ui:Label text="Crew discussion" class="crew__discussion-title" />
+            <ui:ScrollView name="crew__discussion-log" class="crew__discussion-log" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="crew__actions" class="crew__actions">
+            <ui:Button name="crew__balanced" class="btn btn-secondary" text="Use balanced version" />
+            <ui:Button name="crew__max-flavor" class="btn btn-secondary" text="Max flavor" />
+            <ui:Button name="crew__max-profit" class="btn btn-secondary" text="Max profit" />
+            <ui:Button name="crew__apply" class="btn btn-primary" text="Apply crew recipe" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

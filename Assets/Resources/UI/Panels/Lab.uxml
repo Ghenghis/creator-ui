@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="lab-panel" class="lab-panel">
+        <ui:VisualElement class="panel-header">
+            <ui:Label text="AI Pizza Lab" class="panel-header__title" />
+            <ui:VisualElement class="lab__autopilot-row">
+                <ui:Label text="Autopilot" class="lab__autopilot-label" />
+                <ui:VisualElement name="lab__autopilot-toggle" class="lab__autopilot-toggle lab__autopilot-toggle--on" />
+            </ui:VisualElement>
+            <ui:Button name="lab__close" class="panel-header__close" text="x" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="lab__prompt" class="lab__prompt">
+            <ui:Label text="What should I invent?" class="lab__prompt-label" />
+            <ui:VisualElement name="lab__tags" class="lab__tags">
+                <ui:Button name="tag-arizona" class="btn-tag" text="Arizona x" />
+                <ui:Button name="tag-crowd" class="btn-tag" text="Crowd favorite x" />
+                <ui:Button name="tag-heat" class="btn-tag" text="Medium heat x" />
+                <ui:Button name="tag-price" class="btn-tag" text="Under $14 x" />
+            </ui:VisualElement>
+            <ui:Button name="lab__surprise" class="btn btn-primary lab__surprise" text="Surprise me" />
+        </ui:VisualElement>
+
+        <ui:ScrollView name="lab__recipes" class="lab__recipes" />
+
+        <ui:VisualElement name="lab__why" class="lab__why">
+            <ui:Label text="Why it works" class="lab__why-label" />
+            <ui:Label name="lab__why-text" text="" class="lab__why-text" />
+            <ui:Button name="lab__more" class="btn btn-secondary" text="Generate 3 more" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="lab__footer" class="lab__footer">
+            <ui:Button name="lab__mic" class="lab__mic-btn" text="mic" />
+            <ui:Button name="lab__attach" class="lab__attach-btn" text="img" />
+            <ui:TextField name="lab__input" class="lab__input" placeholder="Describe another idea..." />
+            <ui:Button name="lab__build" class="btn btn-primary" text="Build selected pizza" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="sidebar" class="sidebar">
+        <ui:VisualElement name="sidebar__icons" class="sidebar__icons">
+            <ui:Button name="tab-chef-voice" class="sidebar__icon sidebar__icon--active" text="Chef" />
+            <ui:Button name="tab-crew" class="sidebar__icon" text="Crew" />
+            <ui:Button name="tab-lab" class="sidebar__icon" text="Lab" />
+            <ui:Button name="tab-designer" class="sidebar__icon" text="Design" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

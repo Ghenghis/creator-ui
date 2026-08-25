@@ -1,0 +1,35 @@
+@import url("../Shared/Theme.uss");
+
+.sidebar {
+    width: 56px;
+    background-color: var(--color-bg);
+    border-right-width: 1px;
+    border-right-color: var(--color-border);
+    flex-direction: column;
+}
+
+.sidebar__icons {
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+}
+
+.sidebar__icon {
+    width: 40px;
+    height: 40px;
+    margin: var(--spacing-xs) 0;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    border-width: 0;
+    color: var(--color-text-secondary);
+    -unity-font-style: bold;
+}
+
+.sidebar__icon:hover {
+    background-color: var(--color-panel);
+}
+
+.sidebar__icon--active {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}

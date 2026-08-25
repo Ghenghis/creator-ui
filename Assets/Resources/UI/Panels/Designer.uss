@@ -1,0 +1,56 @@
+@import url("../Shared/Theme.uss");
+@import url("../Shared/Buttons.uss");
+@import url("../Shared/Cards.uss");
+@import url("../Shared/Bars.uss");
+
+.designer-panel {
+    width: 380px;
+    background-color: var(--color-panel);
+    padding: var(--spacing-md);
+    flex-direction: column;
+}
+
+.designer__online-row {
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.designer__online { color: var(--color-success); font-size: var(--font-size-caption); }
+
+.designer__tabs { flex-direction: row; margin: var(--spacing-sm) 0; }
+.designer__tabs > .btn-chip { flex-grow: 1; margin: 0 var(--spacing-xs); }
+
+.designer__chat { max-height: 100px; overflow: hidden; }
+
+.designer__recipe-fields { margin: var(--spacing-sm) 0; }
+.designer__field-row { flex-direction: row; margin: 2px 0; }
+.designer__field-label { width: 60px; color: var(--color-text-secondary); font-size: var(--font-size-caption); }
+.designer__field-value { color: var(--color-text-primary); }
+
+.designer__toppings { flex-direction: row; flex-wrap: wrap; margin: var(--spacing-sm) 0; }
+
+.designer__summary { font-size: var(--font-size-caption); color: var(--color-text-secondary); margin: var(--spacing-sm) 0; white-space: normal; }
+
+.designer__scores { flex-direction: row; justify-content: space-around; margin: var(--spacing-sm) 0; }
+.designer__score { -unity-font-style: bold; }
+
+.designer__recipe-actions { flex-direction: row; flex-wrap: wrap; }
+.designer__recipe-actions > .btn { flex-grow: 1; margin: var(--spacing-xs); }
+
+.designer__generating { margin: var(--spacing-sm) 0; }
+.designer__generating-label { font-size: var(--font-size-caption); margin-bottom: var(--spacing-xs); }
+
+.designer__input {
+    background-color: #ffffff;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    border-width: 1px;
+    border-color: var(--color-border);
+}
+
+.designer__input-actions { flex-direction: row; align-items: center; margin-top: var(--spacing-xs); }
+.designer__icon-btn { width: 32px; height: 32px; border-radius: 16px; background-color: transparent; border-width: 0; margin-right: var(--spacing-xs); }
+.designer__send { width: 32px; height: 32px; }

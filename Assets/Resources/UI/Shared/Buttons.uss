@@ -1,0 +1,62 @@
+@import url("Theme.uss");
+
+.btn {
+    height: 40px;
+    padding: 0 var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-width: 0;
+    font-size: var(--font-size-body);
+    -unity-font-style: bold;
+    color: var(--color-text-primary);
+    background-color: var(--color-panel);
+    border-color: var(--color-border);
+}
+
+.btn:hover {
+    background-color: var(--color-bg);
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-hover);
+}
+
+.btn-secondary {
+    background-color: var(--color-panel);
+    border-width: 1px;
+}
+
+.btn-chip {
+    height: 28px;
+    padding: 0 var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-caption);
+    background-color: var(--color-bg);
+    border-width: 1px;
+    border-color: var(--color-border);
+}
+
+.btn-chip--active {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+.btn-tag {
+    height: 24px;
+    padding: 0 var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-caption);
+    background-color: #ffffff;
+    border-width: 1px;
+    border-color: var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+.btn-tag--active {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}

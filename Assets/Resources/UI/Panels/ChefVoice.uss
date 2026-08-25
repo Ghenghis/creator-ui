@@ -1,0 +1,160 @@
+@import url("../Shared/Theme.uss");
+@import url("../Shared/Buttons.uss");
+@import url("../Shared/Cards.uss");
+
+.chef-voice-panel {
+    width: 380px;
+    background-color: var(--color-panel);
+    padding: var(--spacing-md);
+    flex-direction: column;
+}
+
+.panel-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-sm);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--color-border);
+}
+
+.panel-header__title {
+    font-size: var(--font-size-heading);
+    -unity-font-style: bold;
+    color: var(--color-text-primary);
+}
+
+.panel-header__close {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: transparent;
+    border-width: 0;
+    font-size: 18px;
+    color: var(--color-text-secondary);
+}
+
+.chef-voice__status {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+}
+
+.chef-voice__title {
+    font-size: var(--font-size-heading);
+    -unity-font-style: bold;
+    color: var(--color-text-primary);
+}
+
+.chef-voice__listening {
+    font-size: var(--font-size-caption);
+    color: var(--color-success);
+}
+
+.chef-voice__mic-area {
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm) 0;
+    border-width: 1px;
+    border-color: var(--color-border);
+}
+
+.chef-voice__waveform {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: var(--color-accent);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.chef-voice__waveform-icon {
+    font-size: 16px;
+    color: #ffffff;
+    -unity-font-style: bold;
+}
+
+.chef-voice__prompt {
+    font-size: var(--font-size-body);
+    color: var(--color-text-secondary);
+}
+
+.chef-voice__messages {
+    flex-direction: column;
+    margin: var(--spacing-sm) 0;
+}
+
+.chat-msg {
+    margin: var(--spacing-xs) 0;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+}
+
+.chat-msg--user { background-color: #ffffff; }
+.chat-msg--ai { background-color: #fff5e6; }
+
+.chat-msg__author {
+    font-size: var(--font-size-caption);
+    -unity-font-style: bold;
+    color: var(--color-accent);
+    margin-bottom: 2px;
+}
+
+.chat-msg__text {
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+    white-space: normal;
+}
+
+.chef-voice__heat {
+    flex-direction: row;
+    justify-content: center;
+    margin: var(--spacing-sm) 0;
+}
+
+.chef-voice__actions {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: var(--spacing-md);
+}
+
+.card-recipe-draft__header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-recipe-draft__label {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+}
+
+.card-recipe-draft__edit {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-width: 0;
+    color: var(--color-text-secondary);
+}
+
+.card-recipe-draft__ingredients {
+    margin: var(--spacing-sm) 0;
+}
+
+.card-recipe-draft__stats {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: var(--spacing-sm);
+    border-top-width: 1px;
+    border-top-color: var(--color-border);
+}
+
+.recipe-stat__label {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+}

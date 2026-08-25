@@ -1,0 +1,68 @@
+@import url("Theme.uss");
+
+.card {
+    background-color: #ffffff;
+    border-radius: var(--radius-md);
+    border-width: 1px;
+    border-color: var(--color-border);
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm) 0;
+}
+
+.card-recipe-draft {
+    background-color: #ffffff;
+    border-radius: var(--radius-md);
+    border-width: 1px;
+    border-color: var(--color-border);
+    padding: var(--spacing-md);
+    margin: var(--spacing-sm) 0;
+}
+
+.card-recipe-draft__title {
+    font-size: var(--font-size-heading);
+    -unity-font-style: bold;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.card-recipe-card {
+    flex-direction: row;
+    background-color: #ffffff;
+    border-radius: var(--radius-md);
+    border-width: 1px;
+    border-color: var(--color-border);
+    padding: var(--spacing-sm);
+    margin: var(--spacing-xs) 0;
+}
+
+.card-recipe-card__thumb {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-bg);
+    border-radius: var(--radius-sm);
+    margin-right: var(--spacing-sm);
+}
+
+.card-recipe-card__body {
+    flex-grow: 1;
+}
+
+.card-crew-member {
+    flex-direction: row;
+    align-items: center;
+    padding: var(--spacing-sm);
+    background-color: #ffffff;
+    border-radius: var(--radius-sm);
+    margin: 2px 0;
+}
+
+.card-crew-member__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    margin-right: var(--spacing-sm);
+}
+
+.card-crew-member__body {
+    flex-grow: 1;
+}

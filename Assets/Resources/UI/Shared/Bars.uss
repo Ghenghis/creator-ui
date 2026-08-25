@@ -1,0 +1,45 @@
+@import url("Theme.uss");
+
+.bar {
+    height: 8px;
+    background-color: var(--color-bg);
+    border-radius: var(--radius-sm);
+    margin: var(--spacing-xs) 0;
+}
+
+.bar__fill {
+    height: 100%;
+    background-color: var(--color-accent);
+    border-radius: var(--radius-sm);
+    width: 50%;
+}
+
+.bar__fill--success { background-color: var(--color-success); }
+.bar__fill--warning { background-color: var(--color-warning); }
+.bar__fill--error { background-color: var(--color-error); }
+
+.bar-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.bar-row__label {
+    width: 80px;
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+}
+
+.bar-row__track {
+    flex-grow: 1;
+    height: 8px;
+    background-color: var(--color-bg);
+    border-radius: var(--radius-sm);
+    margin: 0 var(--spacing-sm);
+}
+
+.bar-row__value {
+    width: 32px;
+    font-size: var(--font-size-caption);
+    color: var(--color-text-primary);
+    -unity-text-align: middle-right;
+}

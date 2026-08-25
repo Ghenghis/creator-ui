@@ -1,0 +1,56 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="chef-voice-panel" class="chef-voice-panel">
+        <ui:VisualElement name="chef-voice__header" class="panel-header">
+            <ui:Label text="Bakehouse" class="panel-header__title" />
+            <ui:Button name="chef-voice__close" class="panel-header__close" text="x" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="chef-voice__status" class="chef-voice__status">
+            <ui:Label text="Chef Voice" class="chef-voice__title" />
+            <ui:Label text="● Listening" class="chef-voice__listening" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="chef-voice__mic-area" class="chef-voice__mic-area">
+            <ui:VisualElement name="chef-voice__waveform" class="chef-voice__waveform">
+                <ui:Label name="chef-voice__waveform-icon" class="chef-voice__waveform-icon" text="mic" />
+            </ui:VisualElement>
+            <ui:Label text="Tell me what kind of pizza you want" class="chef-voice__prompt" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="chef-voice__messages" class="chef-voice__messages">
+            <ui:VisualElement name="chef-voice__msg-user" class="chat-msg chat-msg--user">
+                <ui:Label text="You" class="chat-msg__author" />
+                <ui:Label name="chef-voice__msg-user-text" class="chat-msg__text" text="" />
+            </ui:VisualElement>
+            <ui:VisualElement name="chef-voice__msg-ai" class="chat-msg chat-msg--ai">
+                <ui:Label text="Chef AI" class="chat-msg__author" />
+                <ui:Label name="chef-voice__msg-ai-text" class="chat-msg__text" text="" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="chef-voice__heat" class="chef-voice__heat">
+            <ui:Button name="heat-mild" class="btn-chip" text="Mild" />
+            <ui:Button name="heat-medium" class="btn-chip btn-chip--active" text="Medium" />
+            <ui:Button name="heat-hot" class="btn-chip" text="Hot" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="chef-voice__recipe" class="card-recipe-draft">
+            <ui:VisualElement class="card-recipe-draft__header">
+                <ui:Label text="AI Recipe Draft" class="card-recipe-draft__label" />
+                <ui:Button name="chef-voice__recipe-edit" class="card-recipe-draft__edit" text="edit" />
+            </ui:VisualElement>
+            <ui:Label name="chef-voice__recipe-name" class="card-recipe-draft__title" text="" />
+            <ui:VisualElement name="chef-voice__recipe-ingredients" class="card-recipe-draft__ingredients" />
+            <ui:VisualElement name="chef-voice__recipe-stats" class="card-recipe-draft__stats">
+                <ui:Label name="stat-cost" class="recipe-stat__label" text="Cost" />
+                <ui:Label name="stat-price" class="recipe-stat__label" text="Suggested Price" />
+                <ui:Label name="stat-profit" class="recipe-stat__label" text="Profit" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="chef-voice__actions" class="chef-voice__actions">
+            <ui:Button name="chef-voice__preview" class="btn btn-secondary" text="Preview on pizza" />
+            <ui:Button name="chef-voice__apply" class="btn btn-primary" text="Apply recipe" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

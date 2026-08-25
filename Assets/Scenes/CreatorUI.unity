@@ -66,6 +66,9 @@ LightmapSettings:
     m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 512
     m_PVRBounces: 2
     m_PVREnvironmentSampleCount: 256
@@ -124,6 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 101}
   - component: {fileID: 102}
+  - component: {fileID: 103}
   m_Layer: 5
   m_Name: CreatorUI
   m_TagString: Untagged
@@ -171,6 +175,21 @@ MonoBehaviour:
   m_FallbackDpi: 96
   m_ReferenceResolutionScale: 0
   m_StartPanelSize: 1
+--- !u!114 &103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3b3b3b3b3b3b3b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  lmstudioUrl: http://127.0.0.1:1234
+  lmstudioModel: qwen3.8-9b-uncensored-cyber-exploit-xrpl-v3
+  openaiKeyEnv: OPENAI_API_KEY
 --- !u!1 &200
 GameObject:
   m_ObjectHideFlags: 0
