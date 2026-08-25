@@ -11,7 +11,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { execSync } from 'child_process';
 import { readdirSync } from 'fs';
-import { join, dirname } from 'path';
+import { join, dirname, basename } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -253,6 +253,42 @@ async function special() {
   await compose();
 }
 
+async function favorites() {
+  const favDir = join(projectRoot, 'docs/evidence/favorites');
+  mkdirSync(favDir, { recursive: true });
+  const subCmd = flags._positional?.[0] || 'list';
+  if (subCmd === 'add') {
+    const src = flags._positional?.[1];
+    if (!src) { console.error('Usage: barro favorites add <pizza.json>'); process.exit(1); }
+    const absSrc = existsSync(src) ? src : join(process.cwd(), src);
+    if (!existsSync(absSrc)) { console.error(`Not found: ${absSrc}`); process.exit(1); }
+    const dst = join(favDir, basename(absSrc));
+    const fs = await import('fs');
+    fs.copyFileSync(absSrc, dst);
+    console.log(`⭐ Favorited: ${dst}`);
+  } else if (subCmd === 'list' || !subCmd || subCmd === 'ls') {
+    const favs = readdirSync(favDir).filter(f => f.endsWith('.final.json')).sort();
+    if (favs.length === 0) { console.log('No favorites yet. Use `barro favorites add <pizza.json>`'); return; }
+    console.log(`⭐ ${favs.length} favorite(s):`);
+    for (const f of favs) {
+      try {
+        const p = JSON.parse(readFileSync(join(favDir, f), 'utf-8'));
+        console.log(`  ${p.ID}  ${(p.Ingredients||[]).length} ingredients  $${p.ProfitFactor}`);
+      } catch { /* skip */ }
+    }
+  } else if (subCmd === 'show') {
+    const name = flags._positional?.[1];
+    if (!name) { console.error('Usage: barro favorites show <recipe-id>'); process.exit(1); }
+    const file = readdirSync(favDir).find(f => f.toLowerCase().includes(name.toLowerCase()));
+    if (!file) { console.error(`Not found: ${name}`); process.exit(1); }
+    const p = JSON.parse(readFileSync(join(favDir, file), 'utf-8'));
+    console.log(JSON.stringify(p, null, 2));
+  } else {
+    console.error(`Unknown favorites subcommand: ${subCmd}`);
+    process.exit(1);
+  }
+}
+
 // === Dispatch ===
 console.log('');
 switch (cmd) {
@@ -263,12 +299,14 @@ switch (cmd) {
   case 'verify': await verify(); break;
   case 'previews': await previews(); break;
   case 'special': await special(); break;
+  case 'favorites': await favorites(); break;
   default:
     console.log(`Barro's Pizza CLI`);
     console.log(`Usage:`);
     console.log(`  barro compose "Make a margherita pizza" [--name Margherita] [--heat Medium]`);
     console.log(`  barro lab --tags "spicy,budget,under-15" [--count 3]`);
     console.log(`  barro special [--seed X]`);
+    console.log(`  barro favorites add|list|show <file|name>`);
     console.log(`  barro verify <pizza.final.json>`);
     console.log(`  barro previews --all`);
     console.log(`  barro previews <pizza.json>...`);
