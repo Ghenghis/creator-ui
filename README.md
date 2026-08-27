@@ -1,23 +1,27 @@
 # Barro's Pizza Creator Chat UI
 
-In-game chat UI for Barro's Pizza (formerly PC3 Pizza Creator). 4 chat modes + Name dialog + sidebar tab nav. Built in Unity UI Toolkit. Truth spec: `docs/mockups/`. Design: `docs/superpowers/specs/2026-08-25-barros-creator-chat-ui-design.md`. Plan: `docs/superpowers/plans/2026-08-25-barros-creator-chat-ui.md`.
+Unity UI Toolkit design prototype for the Barro's Pizza Creator chat experience. It contains four panel layouts, a name dialog, recipe JSON logic and a sidebar navigator. It is **not** the installed-game mod; live injection is owned by `Ghenghis/Barros-Pizza-Creator`.
+
+Current source truth: the panel source exists, but the repository does not yet contain a runnable `CreatorUI.unity` scene, a `SnapshotRunner.Capture` implementation, the five reference mockup PNGs or retained runtime captures. Therefore no pixel-match or installed-game pass is claimed.
 
 ## Quick start
 
-1. Open in Unity 2022.3.20f1
-2. Open `Assets/Scenes/CreatorUI.unity`
-3. Press Play
+1. Use Unity `6000.0.51f1`, matching `ProjectSettings/ProjectVersion.txt`.
+2. Run `node tools/truth-audit.mjs` to see the exact missing acceptance inputs.
+3. Add the scene, capture runner and licensed reference PNGs before running snapshot acceptance.
+4. Port only accepted style/layout measurements into the runtime `Barros-Pizza-Creator` mod.
 
 ## Tests
 
 ```bash
-# EditMode (no Unity Editor needed)
-unity -batchmode -projectPath . -runTests -testPlatform EditMode -testResults TestResults-EditMode.xml
+# Portable source/readiness audit
+node tools/truth-audit.mjs
 
-# PlayMode
-unity -batchmode -projectPath . -runTests -testPlatform PlayMode -testResults TestResults-PlayMode.xml
+# EditMode/PlayMode require the matching Unity Editor
+"$UNITY_PATH" -batchmode -projectPath . -runTests -testPlatform EditMode -testResults TestResults-EditMode.xml -quit
+"$UNITY_PATH" -batchmode -projectPath . -runTests -testPlatform PlayMode -testResults TestResults-PlayMode.xml -quit
 
-# Snapshots (requires Unity in graphics mode)
+# Fail-closed snapshots: all reference PNGs and real captures are mandatory
 node tools/snapshot-runner.mjs
 ```
 
@@ -29,4 +33,5 @@ PC3 / Barro's Pizza only. PC2 (Fast Food Tycoon 2) is PROHIBITED. Do not import 
 
 - Design: `docs/superpowers/specs/2026-08-25-barros-creator-chat-ui-design.md`
 - Plan: `docs/superpowers/plans/2026-08-25-barros-creator-chat-ui.md`
-- Truth proof: `docs/evidence.md`
+- Evidence contract: `docs/evidence.md`
+- Runtime implementation: `https://github.com/Ghenghis/Barros-Pizza-Creator`

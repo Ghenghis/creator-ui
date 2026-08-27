@@ -5,8 +5,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "snapshot": "node tools/snapshot-runner.mjs",
-    "pixelmatch": "node tools/pixelmatch.mjs"
+    "truth": "node truth-audit.mjs",
+    "snapshot": "node snapshot-runner.mjs",
+    "pixelmatch": "node pixelmatch.mjs"
   },
   "devDependencies": {
     "pixelmatch": "^5.3.0",
