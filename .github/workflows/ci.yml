@@ -1,38 +1,53 @@
-name: creator-ui CI
+name: creator-ui truth audit
 
 on:
   push:
-    branches: [master]
+    branches: ['**']
   pull_request:
+  workflow_dispatch:
+    inputs:
+      run_pixel_acceptance:
+        description: 'Run fail-closed Unity capture and pixel acceptance on a prepared Windows runner'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
-  test:
-    runs-on: windows-latest
+  portable-source-audit:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install pixelmatch deps
-        shell: bash
-        run: npm install
+      - name: Audit real readiness
+        run: node tools/truth-audit.mjs
       - name: PC3 scope guard
         shell: bash
         run: |
-          if grep -ril "amount_oz\|FastFood\|Fast Food Tycoon" creator-ui/ Assets/ tests/; then
+          if grep -RIlE "amount_oz|FastFood|Fast Food Tycoon" Assets --include='*.cs' --include='*.json'; then
             echo "PC2 contamination detected. Blocking PR."
             exit 1
           fi
           echo "PC3 scope guard passed."
+
+  windows-pixel-acceptance:
+    if: github.event_name == 'workflow_dispatch' && inputs.run_pixel_acceptance
+    runs-on: [self-hosted, Windows, X64, pc3-creator]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install locked comparison dependencies
+        working-directory: tools
+        run: npm install --ignore-scripts
       - name: Run EditMode tests
-        shell: bash
-        run: |
-          unity -batchmode -projectPath . -runTests -testPlatform EditMode -testResults TestResults-EditMode.xml -quit || true
+        shell: pwsh
+        run: '& $env:UNITY_PATH -batchmode -projectPath . -runTests -testPlatform EditMode -testResults TestResults-EditMode.xml -quit'
       - name: Run PlayMode tests
-        shell: bash
-        run: |
-          unity -batchmode -projectPath . -runTests -testPlatform PlayMode -testResults TestResults-PlayMode.xml -quit || true
-      - name: Snapshot verification (>=98% pixel match)
-        shell: bash
+        shell: pwsh
+        run: '& $env:UNITY_PATH -batchmode -projectPath . -runTests -testPlatform PlayMode -testResults TestResults-PlayMode.xml -quit'
+      - name: Snapshot verification (>=98% each; no skips)
         run: node tools/snapshot-runner.mjs

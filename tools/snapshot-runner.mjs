@@ -19,11 +19,17 @@ const panels = [
   { id: 'name-dialog', mockup: '05-name-dialog.png' }
 ];
 
-const minRatio = 0.93;
+const minRatio = 0.98;
 const results = [];
 for (const p of panels) {
   const ts = new Date().toISOString().replace(/[:.]/g, '-');
   const screenshot = join(snapshotsDir, `${ts}-${p.id}.png`);
+  const mockup = join(mockupsDir, p.mockup);
+  if (!existsSync(mockup)) {
+    console.error(`Required reference mockup missing for ${p.id}: ${mockup}`);
+    results.push({ panel: p.id, pass: false, error: 'reference mockup missing' });
+    continue;
+  }
   try {
     execSync(
       `${unityCmd} -batchmode -projectPath "${projectRoot}" -executeMethod SnapshotRunner.Capture -panel ${p.id} -out "${screenshot}" -quit`,
@@ -35,11 +41,10 @@ for (const p of panels) {
     continue;
   }
   if (!existsSync(screenshot)) {
-    console.warn(`Screenshot missing for ${p.id} - Unity capture not yet implemented; mockup comparison skipped`);
-    results.push({ panel: p.id, pass: true, note: 'mockup-only (Unity capture pending)' });
+    console.error(`Required Unity screenshot missing for ${p.id}`);
+    results.push({ panel: p.id, pass: false, error: 'runtime screenshot missing' });
     continue;
   }
-  const mockup = join(mockupsDir, p.mockup);
   const diff = join(snapshotsDir, `${ts}-${p.id}.diff.png`);
   try {
     execSync(`node tools/pixelmatch.mjs "${mockup}" "${screenshot}" "${diff}" ${minRatio}`, { stdio: 'inherit', cwd: projectRoot });
@@ -57,4 +62,4 @@ if (failed.length > 0) {
   failed.forEach(f => console.error(`  ${f.panel}: ratio=${(f.ratio ?? 0).toFixed(2)}`));
   process.exit(1);
 }
-console.log(`All ${results.length} panels >=${(minRatio * 100).toFixed(0)}% threshold (or pending capture).`);
+console.log(`All ${results.length} panels >=${(minRatio * 100).toFixed(0)}% threshold with real captures.`);
